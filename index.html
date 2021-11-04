@@ -14,13 +14,23 @@
 
 		}
 
-		body { background: cornflowerblue url('m106_colombari_3568.jpg') no-repeat center }  /* พื้นหลังของเว็บไซต์ */
+		body { background: cornflowerblue no-repeat center }  /* พื้นหลังของเว็บไซต์ */
 
-		polygon {
+		.hex {
 			filter: opacity(0.15);
 		}
 
-		polygon:hover {
+		.hex.blue { fill:blue; }
+		.hex.red { fill:red; }
+		.hex.green { fill:green; }
+		.hex.yellow { fill:yellow; }
+		.hex.orange { fill:orange; }
+		.hex.purple { fill:purple; }
+		.hex.pink { fill:pink; }
+		.hex.brown { fill:brown; }
+		
+
+		.hex:hover {
 			/* fill: black; */
 			filter: brightness(90%) saturate(50%) opacity(1.0);
 		}

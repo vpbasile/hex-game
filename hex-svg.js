@@ -1,3 +1,6 @@
+// <!> To draw the hexes:
+// Hexes.forEach(element => { element.draw() })
+
 // <> DOM Elements
 const replaceMe = document.getElementById('replaceMe');
 
@@ -27,24 +30,21 @@ var viewportScale = 1
 class Coordinate2d { constructor(x, y) { this.x = x; this.y = y; } }
 
 class Hex {
-	constructor(r, q, colorString) {
+	constructor(r, q, classes) {
 		// Initialize variables
-		this.q = q
-		this.r = r
-		this.s = -q - r
-		// if (Hexes[this.q, this.r] == undefined) {
-			this.color = colorString
+		if (Hexes[q, r] == undefined) {
+			this.q = q
+			this.r = r
+			this.s = -q - r
+			this.classes = classes
 			this.id = hexUID++
+			// Add this to the array
+			Hexes[q, r] = this;
+			console.log(`Hex ${this.id} created at ${this.q},${this.r}.`)
 			this.visual = []
 			// Translate to center of hex
-			var x = this.q * hexWidth
-			var y = this.r * hexRadius * Math.sin(degtoRad(60))
 			this.center = this.hex_to_pixel(this)
-			// this.announce()
-			// If Hexes[q,r] doesn't exist, create it
-			Hexes[this.id] = this
-			console.log(`Hex ${this.id} created at ${this.q},${this.r}.`)
-		// } else { console.log('Hex already exists at q: ' + this.q + ', r: ' + this.r) }
+		} else { console.log(`Hex ${Hexes[q,r].id} already exists at ${q},${r}.`) }
 	}
 	announce() { console.log(`Hex ${this.id} created at (q:${this.q}, r:${this.r}, s:${this.s}), which is x:${this.center.x},y:${this.center.y}`) }
 	draw() {
@@ -62,19 +62,20 @@ class Hex {
 			if (polygonString != "") { polygonString += " " }
 			polygonString += `${x},${y}`
 		});
-		// console.log(polygonString)
+		var onClickString = `Hex[${this.q},${this.r}]`
 		this.visual = gameBoard.polygon(polygonString)
-			.stroke(`#fff`)
-			.fill(this.color)
+			.stroke(`none`)
+			.fill("#000")
 			.attr('id', this.id)
-			.attr('class', 'hex')
+			.attr('class', `hex ${this.classes}`)
 			.attr('stroke-width', '2')
-		this.visual.attr('id', this.id)
-		this.visual.attr('class', 'hex')
-		this.visual.className = 'test'
-		this.visual.id = this.id
-		this.visual.style.cursor = 'pointer'
-		this.visual.onclick = function () { this.click }
+			.attr('stroke', '#000')
+			// This method of setting onClick does not work
+			// .attr('onClick', function () { console.log(`Clicked ${this.id}`) })
+			// Do it this way instead
+			.on('click', function () { console.log(onClickString); })
+			// Thanks, Copilot!
+			.attr('cursor', 'pointer')
 		presentationString += `${this.id}\n(${this.q},${this.r})`
 		if (verbose) { gameBoard.text(presentationString).fill('#fff').move(x - 1.5 * hexRadius, y) }
 	}
@@ -117,67 +118,71 @@ function init() {
 	console.log(`Canvas size is ${xCanvasSize} by ${yCanvasSize}`)
 }
 
+function spaceBoard() {
+	diamond(4, Hexes[0, 0])
+
+	var temp
+	// First ring
+	ring = 1
+	currentColor = `#003`
+	temp = new Hex(-1, 0)
+	temp = new Hex(-1, 1)
+	temp = new Hex(0, -1)
+	temp = new Hex(0, 1)
+	temp = new Hex(1, -1)
+	temp = new Hex(1, 0)
+	console.log(Hexes)
+	// Second ring
+	ring = 2
+	currentColor = `#006`
+	temp = new Hex(-2, 0)
+	temp = new Hex(-2, 1)
+	temp = new Hex(-2, 2)
+	temp = new Hex(-1, -1)
+	temp = new Hex(-1, 2)
+	temp = new Hex(0, -2)
+	temp = new Hex(0, 2)
+	temp = new Hex(1, -2)
+	temp = new Hex(1, 1)
+	temp = new Hex(2, -2)
+	temp = new Hex(2, -1)
+	temp = new Hex(2, 0)
+	// Third ring
+	ring = 3
+	currentColor = `#009`
+	temp = new Hex(-3, 0)
+	temp = new Hex(-3, 1)
+	temp = new Hex(-3, 2)
+	temp = new Hex(-3, 3)
+	temp = new Hex(-2, -1)
+	temp = new Hex(-2, 3)
+	temp = new Hex(-1, -2)
+	temp = new Hex(-1, 3)
+	temp = new Hex(0, -3)
+	temp = new Hex(0, 3)
+	temp = new Hex(1, -3)
+	temp = new Hex(1, 2)
+	temp = new Hex(2, -3)
+	temp = new Hex(2, 1)
+	temp = new Hex(3, -3)
+	temp = new Hex(3, -2)
+	temp = new Hex(3, -1)
+	temp = new Hex(3, 0)
+} // End of spaceBoard()
+
+function grid(dimension) {
+	for (var r = -dimension; r <= dimension; r++) {
+		for (var q = -dimension; q <= dimension; q++) {
+			Hexes[q, r] = new Hex(q, r);
+		}
+	}
+}
+
+
 // <> Main
 init()
-// Create the hexes
-// Draw things
-// center
-ring = 0
-var currentColor = `hsl(40, 100%, 50%)`
-origin = new Hex(0, 0, currentColor)
+var origin = new Hex(0, 0, "blue")
+var other = new Hex(1, 1, "red")
+new Hex(1,1)
 
-diamond(4, Hexes[0, 0])
-
-var temp
-// First ring
-ring = 1
-currentColor = `#003`
-temp = new Hex(-1, 0, currentColor)
-temp = new Hex(-1, 1, currentColor)
-temp = new Hex(0, -1, currentColor)
-temp = new Hex(0, 1, currentColor)
-temp = new Hex(1, -1, currentColor)
-temp = new Hex(1, 0, currentColor)
-console.log(Hexes)
-// Second ring
-ring = 2
-currentColor = `#006`
-temp = new Hex(-2, 0, currentColor)
-temp = new Hex(-2, 1, currentColor)
-temp = new Hex(-2, 2, currentColor)
-temp = new Hex(-1, -1, currentColor)
-temp = new Hex(-1, 2, currentColor)
-temp = new Hex(0, -2, currentColor)
-temp = new Hex(0, 2, currentColor)
-temp = new Hex(1, -2, currentColor)
-temp = new Hex(1, 1, currentColor)
-temp = new Hex(2, -2, currentColor)
-temp = new Hex(2, -1, currentColor)
-temp = new Hex(2, 0, currentColor)
-// Third ring
-ring = 3
-currentColor = `#009`
-temp = new Hex(-3, 0, currentColor)
-temp = new Hex(-3, 1, currentColor)
-temp = new Hex(-3, 2, currentColor)
-temp = new Hex(-3, 3, currentColor)
-temp = new Hex(-2, -1, currentColor)
-temp = new Hex(-2, 3, currentColor)
-temp = new Hex(-1, -2, currentColor)
-temp = new Hex(-1, 3, currentColor)
-temp = new Hex(0, -3, currentColor)
-temp = new Hex(0, 3, currentColor)
-temp = new Hex(1, -3, currentColor)
-temp = new Hex(1, 2, currentColor)
-temp = new Hex(2, -3, currentColor)
-temp = new Hex(2, 1, currentColor)
-temp = new Hex(3, -3, currentColor)
-temp = new Hex(3, -2, currentColor)
-temp = new Hex(3, -1, currentColor)
-temp = new Hex(3, 0, currentColor)
-
-// Draw the hexes
 Hexes.forEach(element => { element.draw() })
-// SVG.on(`click`, () => { console.log(`Click`) })
-
-
