@@ -5,13 +5,14 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    sodipodi:docname="gameboard-with-photo.svg"
    id="svg120"
-   height="784.44336"
-   width="1303.5859"
+   height="1222.5487"
+   width="1740.3666"
    svgjs="http://svgjs.com/svgjs"
    xlink="http://www.w3.org/1999/xlink"
    version="1.1">
@@ -30,6 +31,7 @@
   <defs
      id="defs124" />
   <sodipodi:namedview
+     borderlayer="true"
      fit-margin-bottom="1"
      fit-margin-right="1"
      fit-margin-left="1"
@@ -39,9 +41,9 @@
      inkscape:window-maximized="1"
      inkscape:window-y="-8"
      inkscape:window-x="-8"
-     inkscape:cy="392.22168"
-     inkscape:cx="651.79297"
-     inkscape:zoom="0.81467586"
+     inkscape:cy="598.42901"
+     inkscape:cx="876.79208"
+     inkscape:zoom="0.47893303"
      showgrid="false"
      id="namedview122"
      inkscape:window-height="1009"
@@ -54,737 +56,831 @@
      borderopacity="1"
      bordercolor="#666666"
      pagecolor="#ffffff" />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="100"
-     fill="#000099"
-     stroke="#ffffff"
-     points="880,331 836,306 836,256 880,231 923,255 923,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="101"
-     fill="#000099"
-     stroke="#ffffff"
-     points="966,331 923,306 923,256 966,231 1010,255 1010,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="102"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1053,331 1010,306 1010,256 1053,231 1096,255 1096,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="103"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1139,331 1096,306 1096,256 1139,231 1183,255 1183,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="104"
-     fill="#000099"
-     stroke="#ffffff"
-     points="836,406 793,381 793,331 836,306 880,331 880,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="105"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1183,406 1139,381 1139,331 1183,306 1226,331 1226,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="106"
-     fill="#000099"
-     stroke="#ffffff"
-     points="793,481 750,456 750,406 793,381 836,406 836,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="107"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1226,481 1183,456 1183,406 1226,381 1269,406 1269,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="108"
-     fill="#000099"
-     stroke="#ffffff"
-     points="750,556 706,531 706,481 750,456 793,481 793,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="109"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1269,556 1226,531 1226,481 1269,456 1313,481 1313,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="110"
-     fill="#000099"
-     stroke="#ffffff"
-     points="793,631 750,606 750,556 793,531 836,556 836,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="111"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1226,631 1183,606 1183,556 1226,531 1269,556 1269,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="112"
-     fill="#000099"
-     stroke="#ffffff"
-     points="836,706 793,681 793,631 836,606 880,631 880,681 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="113"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1183,706 1139,681 1139,631 1183,606 1226,631 1226,681 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="114"
-     fill="#000099"
-     stroke="#ffffff"
-     points="880,781 836,756 836,706 880,681 923,706 923,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="115"
-     fill="#000099"
-     stroke="#ffffff"
-     points="966,781 923,756 923,706 966,681 1010,706 1010,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="116"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1053,781 1010,756 1010,706 1053,681 1096,706 1096,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="117"
-     fill="#000099"
-     stroke="#ffffff"
-     points="1139,781 1096,756 1096,706 1139,681 1183,706 1183,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="0"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1053,481 1053,531 1010,556 966,531 966,481 1010,456 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="1"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="533,180 533,231 490,256 447,231 447,181 490,156 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="2"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="576,255 576,306 533,331 490,306 490,256 533,231 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="3"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="620,331 620,381 576,406 533,381 533,331 576,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="4"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="663,406 663,456 620,481 576,456 576,406 620,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="5"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="706,481 706,531 663,556 620,531 620,481 663,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="6"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="750,556 750,606 706,631 663,606 663,556 706,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="7"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="793,631 793,681 750,706 706,681 706,631 750,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="8"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="836,706 836,756 793,781 750,756 750,706 793,681 " />
-  <polygon
-     onclick="this.click()"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="9"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="880,781 880,831 836,856 793,831 793,781 836,756 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="10"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="620,180 620,231 576,256 533,231 533,181 576,156 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="11"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="663,255 663,306 620,331 576,306 576,256 620,231 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="12"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="706,331 706,381 663,406 620,381 620,331 663,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="13"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="750,406 750,456 706,481 663,456 663,406 706,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="18"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="966,781 966,831 923,856 880,831 880,781 923,756 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="19"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="706,180 706,231 663,256 620,231 620,181 663,156 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="20"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="750,255 750,306 706,331 663,306 663,256 706,231 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="21"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="793,331 793,381 750,406 706,381 706,331 750,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="23"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="880,481 880,531 836,556 793,531 793,481 836,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="24"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="923,556 923,606 880,631 836,606 836,556 880,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="25"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="966,631 966,681 923,706 880,681 880,631 923,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="27"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1053,781 1053,831 1010,856 966,831 966,781 1010,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="28"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="793,180 793,231 750,256 706,231 706,181 750,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="29"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="836,255 836,306 793,331 750,306 750,256 793,231 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="31"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="923,406 923,456 880,481 836,456 836,406 880,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="32"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="966,481 966,531 923,556 880,531 880,481 923,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="33"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1010,556 1010,606 966,631 923,606 923,556 966,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="34"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1053,631 1053,681 1010,706 966,681 966,631 1010,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="36"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1139,781 1139,831 1096,856 1053,831 1053,781 1096,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="37"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="880,180 880,231 836,256 793,231 793,181 836,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="39"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="966,331 966,381 923,406 880,381 880,331 923,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="40"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1010,406 1010,456 966,481 923,456 923,406 966,381 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="41"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1053,481 1053,531 1010,556 966,531 966,481 1010,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="42"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1096,556 1096,606 1053,631 1010,606 1010,556 1053,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="43"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1139,631 1139,681 1096,706 1053,681 1053,631 1096,606 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="45"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1226,781 1226,831 1183,856 1139,831 1139,781 1183,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="46"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="966,180 966,231 923,256 880,231 880,181 923,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="48"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1053,331 1053,381 1010,406 966,381 966,331 1010,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="49"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1096,406 1096,456 1053,481 1010,456 1010,406 1053,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="50"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1139,481 1139,531 1096,556 1053,531 1053,481 1096,456 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="51"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1183,556 1183,606 1139,631 1096,606 1096,556 1139,531 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="53"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1269,706 1269,756 1226,781 1183,756 1183,706 1226,681 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="54"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1313,781 1313,831 1269,856 1226,831 1226,781 1269,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="55"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1053,180 1053,231 1010,256 966,231 966,181 1010,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="57"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1139,331 1139,381 1096,406 1053,381 1053,331 1096,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="58"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1183,406 1183,456 1139,481 1096,456 1096,406 1139,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="59"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1226,481 1226,531 1183,556 1139,531 1139,481 1183,456 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="61"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1313,631 1313,681 1269,706 1226,681 1226,631 1269,606 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="62"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1356,706 1356,756 1313,781 1269,756 1269,706 1313,681 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="63"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1399,781 1399,831 1356,856 1313,831 1313,781 1356,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="64"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1139,180 1139,231 1096,256 1053,231 1053,181 1096,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="69"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1356,556 1356,606 1313,631 1269,606 1269,556 1313,531 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="70"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1399,631 1399,681 1356,706 1313,681 1313,631 1356,606 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="71"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1443,706 1443,756 1399,781 1356,756 1356,706 1399,681 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="72"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1486,781 1486,831 1443,856 1399,831 1399,781 1443,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="73"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1226,180 1226,231 1183,256 1139,231 1139,181 1183,156 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="74"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1269,255 1269,306 1226,331 1183,306 1183,256 1226,231 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="75"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1313,331 1313,381 1269,406 1226,381 1226,331 1269,306 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="76"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1356,406 1356,456 1313,481 1269,456 1269,406 1313,381 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="77"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1399,481 1399,531 1356,556 1313,531 1313,481 1356,456 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="78"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1443,556 1443,606 1399,631 1356,606 1356,556 1399,531 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="79"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1486,631 1486,681 1443,706 1399,681 1399,631 1443,606 " />
-  <polygon
-     style="fill:#000099;fill-opacity:1"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="80"
-     fill="#0055ff"
-     stroke="#ffffff"
-     points="1529,706 1529,756 1486,781 1443,756 1443,706 1486,681 " />
-  <polygon
-     onclick="console.log('Click registered')"
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="81"
-     fill="#ffaa00"
-     stroke="#ffffff"
-     points="1572,781 1572,831 1529,856 1486,831 1486,781 1529,756 " />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="82"
-     fill="#000033"
-     stroke="#ffffff"
-     points="966,481 923,456 923,406 966,381 1010,406 1010,456 "
-     style="fill:#000099;fill-opacity:1" />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="83"
-     fill="#000033"
-     stroke="#ffffff"
-     points="1053,481 1010,456 1010,406 1053,381 1096,406 1096,456 "
-     style="fill:#000099;fill-opacity:1" />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="84"
-     fill="#000033"
-     stroke="#ffffff"
-     points="923,556 880,531 880,481 923,456 966,481 966,531 "
-     style="fill:#000099;fill-opacity:1" />
-  <polygon
-     onclick=""
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="85"
-     fill="#000033"
-     stroke="#ffffff"
-     points="1096,556 1053,531 1053,481 1096,456 1139,481 1139,531 "
-     style="fill:#000099;fill-opacity:1" />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="86"
-     fill="#000033"
-     stroke="#ffffff"
-     points="966,631 923,606 923,556 966,531 1010,556 1010,606 "
-     style="fill:#000099;fill-opacity:1" />
-  <polygon
-     transform="rotate(150,845.93827,401.00666)"
-     stroke-width="2"
-     class="hex"
-     id="87"
-     fill="#000033"
-     stroke="#ffffff"
-     points="1053,631 1010,606 1010,556 1053,531 1096,556 1096,606 "
-     style="fill:#000099;fill-opacity:1" />
+  <rect
+     y="1.585825"
+     x="1.585825"
+     height="1219.3771"
+     width="1737.1949"
+     id="rect390"
+     style="opacity:0.25;fill:#000099;fill-opacity:1;stroke:#0000ff;stroke-width:1.17165;stroke-dasharray:3.51496, 1.17165;stop-color:#000000" />
+  <g
+     transform="translate(-385.05948,-565.22391)"
+     id="g388">
+    <image
+       sodipodi:absref="C:\xampp\htdocs\making hexagons\hex-game\m106_colombari_3568.jpg"
+       xlink:href="m106_colombari_3568.jpg"
+       id="image204"
+       preserveAspectRatio="none"
+       height="1484.5499"
+       width="1901.9297"
+       x="310.88672"
+       y="421.37796" />
+    <g
+       id="g296"
+       transform="rotate(30,-468.3253,1782.0589)">
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="100"
+         fill="#000099"
+         stroke="#ffffff"
+         points="923,306 880,331 836,306 836,256 880,231 923,255 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="101"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1010,306 966,331 923,306 923,256 966,231 1010,255 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="102"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1096,306 1053,331 1010,306 1010,256 1053,231 1096,255 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="103"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1183,306 1139,331 1096,306 1096,256 1139,231 1183,255 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="104"
+         fill="#000099"
+         stroke="#ffffff"
+         points="880,381 836,406 793,381 793,331 836,306 880,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="105"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1226,381 1183,406 1139,381 1139,331 1183,306 1226,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="106"
+         fill="#000099"
+         stroke="#ffffff"
+         points="836,456 793,481 750,456 750,406 793,381 836,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="107"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1269,456 1226,481 1183,456 1183,406 1226,381 1269,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="108"
+         fill="#000099"
+         stroke="#ffffff"
+         points="793,531 750,556 706,531 706,481 750,456 793,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="109"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1313,531 1269,556 1226,531 1226,481 1269,456 1313,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="110"
+         fill="#000099"
+         stroke="#ffffff"
+         points="836,606 793,631 750,606 750,556 793,531 836,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="111"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1269,606 1226,631 1183,606 1183,556 1226,531 1269,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="112"
+         fill="#000099"
+         stroke="#ffffff"
+         points="880,681 836,706 793,681 793,631 836,606 880,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="113"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1226,681 1183,706 1139,681 1139,631 1183,606 1226,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="114"
+         fill="#000099"
+         stroke="#ffffff"
+         points="923,756 880,781 836,756 836,706 880,681 923,706 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="115"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1010,756 966,781 923,756 923,706 966,681 1010,706 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="116"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1096,756 1053,781 1010,756 1010,706 1053,681 1096,706 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="117"
+         fill="#000099"
+         stroke="#ffffff"
+         points="1183,756 1139,781 1096,756 1096,706 1139,681 1183,706 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="0"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1010,456 1053,481 1053,531 1010,556 966,531 966,481 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="1"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="490,156 533,180 533,231 490,256 447,231 447,181 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="2"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="533,231 576,255 576,306 533,331 490,306 490,256 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="3"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="576,306 620,331 620,381 576,406 533,381 533,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="4"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="620,381 663,406 663,456 620,481 576,456 576,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="5"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="663,456 706,481 706,531 663,556 620,531 620,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="6"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="706,531 750,556 750,606 706,631 663,606 663,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="7"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="750,606 793,631 793,681 750,706 706,681 706,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="8"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="793,681 836,706 836,756 793,781 750,756 750,706 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="this.click()"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="9"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="836,756 880,781 880,831 836,856 793,831 793,781 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="10"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="576,156 620,180 620,231 576,256 533,231 533,181 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="11"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="620,231 663,255 663,306 620,331 576,306 576,256 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="12"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="663,306 706,331 706,381 663,406 620,381 620,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="13"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="706,381 750,406 750,456 706,481 663,456 663,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="18"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="923,756 966,781 966,831 923,856 880,831 880,781 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="19"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="663,156 706,180 706,231 663,256 620,231 620,181 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="20"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="706,231 750,255 750,306 706,331 663,306 663,256 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="21"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="750,306 793,331 793,381 750,406 706,381 706,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="23"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="836,456 880,481 880,531 836,556 793,531 793,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="24"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="880,531 923,556 923,606 880,631 836,606 836,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="25"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="923,606 966,631 966,681 923,706 880,681 880,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="27"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1010,756 1053,781 1053,831 1010,856 966,831 966,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="28"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="750,156 793,180 793,231 750,256 706,231 706,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="29"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="793,231 836,255 836,306 793,331 750,306 750,256 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="31"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="880,381 923,406 923,456 880,481 836,456 836,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="32"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="923,456 966,481 966,531 923,556 880,531 880,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="33"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="966,531 1010,556 1010,606 966,631 923,606 923,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="34"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1010,606 1053,631 1053,681 1010,706 966,681 966,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="36"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1096,756 1139,781 1139,831 1096,856 1053,831 1053,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="37"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="836,156 880,180 880,231 836,256 793,231 793,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="39"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="923,306 966,331 966,381 923,406 880,381 880,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="40"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="966,381 1010,406 1010,456 966,481 923,456 923,406 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="41"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1010,456 1053,481 1053,531 1010,556 966,531 966,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="42"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1053,531 1096,556 1096,606 1053,631 1010,606 1010,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="43"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1096,606 1139,631 1139,681 1096,706 1053,681 1053,631 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="45"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1183,756 1226,781 1226,831 1183,856 1139,831 1139,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="46"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="923,156 966,180 966,231 923,256 880,231 880,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="48"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1010,306 1053,331 1053,381 1010,406 966,381 966,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="49"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1053,381 1096,406 1096,456 1053,481 1010,456 1010,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="50"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1096,456 1139,481 1139,531 1096,556 1053,531 1053,481 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="51"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1139,531 1183,556 1183,606 1139,631 1096,606 1096,556 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="53"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1226,681 1269,706 1269,756 1226,781 1183,756 1183,706 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="54"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1269,756 1313,781 1313,831 1269,856 1226,831 1226,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="55"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1010,156 1053,180 1053,231 1010,256 966,231 966,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="57"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1096,306 1139,331 1139,381 1096,406 1053,381 1053,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="58"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1139,381 1183,406 1183,456 1139,481 1096,456 1096,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="59"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1183,456 1226,481 1226,531 1183,556 1139,531 1139,481 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="61"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1269,606 1313,631 1313,681 1269,706 1226,681 1226,631 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="62"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1313,681 1356,706 1356,756 1313,781 1269,756 1269,706 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="63"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1356,756 1399,781 1399,831 1356,856 1313,831 1313,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="64"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1096,156 1139,180 1139,231 1096,256 1053,231 1053,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="69"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1313,531 1356,556 1356,606 1313,631 1269,606 1269,556 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="70"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1356,606 1399,631 1399,681 1356,706 1313,681 1313,631 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="71"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1399,681 1443,706 1443,756 1399,781 1356,756 1356,706 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="72"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1443,756 1486,781 1486,831 1443,856 1399,831 1399,781 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="73"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1183,156 1226,180 1226,231 1183,256 1139,231 1139,181 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="74"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1226,231 1269,255 1269,306 1226,331 1183,306 1183,256 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="75"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1269,306 1313,331 1313,381 1269,406 1226,381 1226,331 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="76"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1313,381 1356,406 1356,456 1313,481 1269,456 1269,406 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="77"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1356,456 1399,481 1399,531 1356,556 1313,531 1313,481 " />
+      <polygon
+         style="opacity:0.25"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="78"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1399,531 1443,556 1443,606 1399,631 1356,606 1356,556 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="79"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1443,606 1486,631 1486,681 1443,706 1399,681 1399,631 " />
+      <polygon
+         style="opacity:0.25;fill:#000099;fill-opacity:1"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="80"
+         fill="#0055ff"
+         stroke="#ffffff"
+         points="1486,681 1529,706 1529,756 1486,781 1443,756 1443,706 " />
+      <polygon
+         style="opacity:0.25"
+         onclick="console.log('Click registered')"
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="81"
+         fill="#ffaa00"
+         stroke="#ffffff"
+         points="1529,756 1572,781 1572,831 1529,856 1486,831 1486,781 " />
+      <polygon
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="82"
+         fill="#000033"
+         stroke="#ffffff"
+         points="1010,456 966,481 923,456 923,406 966,381 1010,406 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+      <polygon
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="83"
+         fill="#000033"
+         stroke="#ffffff"
+         points="1096,456 1053,481 1010,456 1010,406 1053,381 1096,406 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+      <polygon
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="84"
+         fill="#000033"
+         stroke="#ffffff"
+         points="966,531 923,556 880,531 880,481 923,456 966,481 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+      <polygon
+         onclick=""
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="85"
+         fill="#000033"
+         stroke="#ffffff"
+         points="1139,531 1096,556 1053,531 1053,481 1096,456 1139,481 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+      <polygon
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="86"
+         fill="#000033"
+         stroke="#ffffff"
+         points="1010,606 966,631 923,606 923,556 966,531 1010,556 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+      <polygon
+         transform="rotate(150,845.93827,401.00666)"
+         stroke-width="2"
+         class="hex"
+         id="87"
+         fill="#000033"
+         stroke="#ffffff"
+         points="1096,606 1053,631 1010,606 1010,556 1053,531 1096,556 "
+         style="opacity:0.25;fill:#000099;fill-opacity:1" />
+    </g>
+  </g>
 </svg>
