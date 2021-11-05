@@ -116,7 +116,7 @@ class Hex {
 // <> Hex-altering Functions
 function updateHex(hex) {
 	hex.attr('class', `hex white`)
-}
+}	
 
 // <> Helper Functions
 function pad(value, pad){
