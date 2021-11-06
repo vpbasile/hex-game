@@ -28,13 +28,23 @@
 
 		.hex.blue { fill:blue; }
 		.hex.red { fill:red; }
-		.hex.green { fill:hsla(150,100%,50%,0.5); }
+		.hex.clickable { fill:hsla(150,100%,50%,0.5); }
 		.hex.yellow { fill:yellow; }
 		.hex.orange { fill:orange; }
 		.hex.purple { fill:purple; }
 		.hex.pink { fill:pink; }
 		.hex.brown { fill:brown; }
-		.hex.black { fill:black; }
+		.hex.black { fill:black; stroke: white;}
+
+		.lastclick {
+			stroke: whitesmoke;
+			stroke-width: 5;
+		}
+
+		.locked {
+			filter: opacity(1);
+			fill: white;
+		}
 		
 
 		.hex:hover {
