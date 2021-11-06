@@ -13,19 +13,13 @@
 			align-items: center;
 
 		}
-
 		
-		
-		body { background: url(soil-square.jpg) url(https://unsplash.com/photos/iB1JuJyQob4) cornflowerblue no-repeat center }  /* พื้นหลังของเว็บไซต์ */
+		body { background: url('soil-square.jpg') url('https://unsplash.com/photos/iB1JuJyQob4') cornflowerblue no-repeat center }  /* พื้นหลังของเว็บไซต์ */
 		
 		#replaceMe {
 		  background: rgba(0,0,0,1);
 		}
-
-		/* .hex {
-			filter: opacity(0.35);
-		} */
-
+		
 		.hex.blue { fill:blue; }
 		.hex.red { fill:red; }
 		.hex.clickable { fill:hsla(150,100%,50%,0.5); }
@@ -42,12 +36,12 @@
 		}
 
 		.locked {
-			filter: opacity(1);
+			filter: opacity(0.3);
 			fill: white;
 		}
 		
 
-		.hex:hover {
+		.hex.hex.clickable:hover {
 			/* fill: black; */
 			filter: brightness(90%) saturate(50%) opacity(1.0);
 		}

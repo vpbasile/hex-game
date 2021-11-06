@@ -7,6 +7,8 @@ const skipCenter = true
 // const hexRadius = 50
 var hexRadius
 const separationMultiplier = 1.1
+const textSize = 50
+const textSpacingHeight = textSize*1.2
 // <> Calculated global variables
 // With pointy top, they’re at 30°, 90°, 150°, 210°, 270°, 330°
 const cornerAngles = [30, 90, 150, 210, 270, 330]
@@ -28,7 +30,12 @@ var attempts = 0
 var firstload = true
 
 // Gameplay global variables
-var currentColor = "orange"
+const colors = ['orange', 'blue']
+const players = [0, 1]
+var currentPlayer = 0
+var currentTurn = 1
+var currentColor = colors[currentPlayer]
+var wordHistory = []
 var currentword = ""
 var lastCLickedHex = null
 
@@ -125,6 +132,10 @@ class Hex {
 					, size: 40
 					, anchor: 'middle'
 				})
+				displayLetter.on('click', function () {
+					debug(onClickString)
+					handleClick(id);
+				})
 		} else { if (firstload) { console.log(`Hex ${this.id} has no letter.`) } }
 		if (verbose) {
 			presentationString += `${this.id}\n(${this.q},${this.r})`
@@ -132,44 +143,96 @@ class Hex {
 		}
 	}
 
-	isNeighbor(comparisonHex) {
-		var distance = Math.abs(this.q - comparisonHex.q) + Math.abs(this.r - comparisonHex.r) + Math.abs(this.s - comparisonHex.s)
-		if (distance == 1) {
-			return true
-		}
-		else {
-			return false
-		}
-
+	isOrigin() {
+		if(this.q == 0 && this.r == 0) {  return true }
+		else { return false }
 	}
+
+	setClasses(classes) {
+		this.classes = ""
+		if (skipCenter == true && this.isOrigin()) {
+			// Do nothing becuase the center should be blank
+			this.classes = "hex locked black"
+		} else {
+			this.classes = `hex ${classes}`
+			// this.visual.attr('class', `hex ${this.classes}`)
+		}
+	}
+
+	isNeighbor(comparisonHex) {
+		var foundNeighbor = false
+		directionVectors.forEach(element => {
+			if (this.q + element.q == comparisonHex.q && this.r + element.r == comparisonHex.r) { foundNeighbor = true }
+		})
+		return foundNeighbor
+	}
+
+	// var cube_direction_vectors = [
+	// 	Cube(+1, 0, -1), Cube(+1, -1, 0), Cube(0, -1, +1), 
+	// 	Cube(-1, 0, +1), Cube(-1, +1, 0), Cube(0, +1, -1), 
+	// ]
+
+	// function cube_direction(direction):
+	// 	return cube_direction_vectors[direction]
+
+	// function cube_add(hex, vec):
+	// 	return Cube(hex.q + vec.q, hex.r + vec.q, hex.s + vec.s)
+
+	// function cube_neighbor(cube, direction):
+	// 	return cube_add(cube, cube_direction(direction))
 
 
 } // End of class Hex
 
 // <> Hex-altering Functions
+
+function constructAllHexes() {
+	for (i = 0; i < Hexes.length; i++) {
+		var currentHex = Hexes[i];
+		if (currentHex.isOrigin()) {
+			console.log(`Creating origin`)
+		} else {
+			thisLetter = results.pop()
+			currentHex.letter = thisLetter;
+			console.log(`Assigning ${thisLetter} to hex ${currentHex.id}`)
+			currentHex.setClasses("clickable")
+			console.log(`Hex ${currentHex.id} has classes ${currentHex.classes}`)
+		}
+	}
+}
+
+function addTo(hexA, hexB) { return new Hex(hexA.q + hexB.q, hexA.r + hexB.r, hexA.s + hexB.s) }
+
+// Store all of the q,r pairs in an array
+var directionVectors = [
+	{ "q": +1, "r": 0 }, { "q": +1, "r": -1 }, { "q": 0, "r": -1 }, { "q": -1, "r": 0 }, { "q": -1, "r": +1 }, { "q": 0, "r": +1 }
+]
+
 function refreshView() {
+	gameBoard.clear()
 	// Refresh the viewport
 	// Draw all the hexes with their letters
 	Hexes.forEach(element => { element.draw() })
 	// Draw the current word
 	drawCurrentWord()
+	// Draw the history
+	drawHistory()
 }
 
 function drawCurrentWord() {
-	
+
 	var wordObject = gameBoard.text(currentword)
 	// .fill('#fff')
 	// .move(canvasCenter.x - 1.5 * hexRadius, canvasCenter.y - hexHeight / 2)
-	 wordObject.text(currentword).fill(currentColor).stroke('#000')
-	 .move(50, 50)
+	wordObject.text(currentword).fill(currentColor).stroke('#000')
+		.move(textSpacingHeight, textSpacingHeight)
 		.font({
 			family: 'monospace'
 			, weight: 'bold'
-			, size: 50
+			, size: textSize
 			, anchor: 'start'
 		})
 		.on('click', function () {
-			console.log(`Clicked currentword`)
 			endTurn()
 		})
 	console.log(`Current word: ${currentword}`)
@@ -195,17 +258,34 @@ function handleClick(hexId) {
 function successfulClick(clickedHex) {
 	// Keep track of the letters so that you can rewind mistakes
 	// !!!!! Still didnt do that
+
 	// Remove the lastclick class from the other letter
-	if(lastCLickedHex!=null){lastCLickedHex.classes = `hex ${currentColor}`}
+	if (lastCLickedHex != null) { lastCLickedHex.setClasses(`${currentColor}`) }
 	// Now update the new last clicked hex
 	lastCLickedHex = clickedHex
-	clickedHex.classes = `hex ${currentColor} lastclick`
+	clickedHex.setClasses(`${currentColor} lastclick clickable`)
 	// Add the letter to the word
 	currentword += clickedHex.letter
 	// Update the word display
 	drawCurrentWord()
 
-	Hexes.forEach(element => { if (clickedHex.isNeighbor(element)) { console.log(`neighbor found at ${element.q}, ${element.r}`) } })
+	Hexes.forEach(element => {
+		if (element.classes.includes(currentColor)) {
+			// Do nothing
+		} else {
+			if (clickedHex.isNeighbor(element)) {
+				debug(`neighbor found at ${element.q}, ${element.r}`)
+				element.setClasses(`clickable`)
+			} else { element.setClasses(`locked`) }
+		}
+	})
+	
+	// Lock every hex that is not a neighbor of the clicked hex
+	Hexes.forEach(element => {
+		if (!clickedHex.isNeighbor(element)) {
+		}
+	})
+	
 	gameBoard.clear()
 	refreshView()
 
@@ -220,12 +300,36 @@ function successfulClick(clickedHex) {
 }
 
 function endTurn() {
+	console.log(`${currentTurn} The ${colors[currentPlayer]} player enterd ${currentword}`)
+	wordHistory[currentTurn] = {"word": currentword, "color": currentColor}
+	currentTurn++
 	// Clear the current word
 	currentword = ""
 	// Switch the current player to the next player
-	currentColor = (currentColor == "orange") ? "blue" : "orange"
+	currentPlayer = (currentPlayer + 1) % players.length
+	currentColor = colors[currentPlayer]
 	// Clear the last clicked hex
 	lastCLickedHex = null
+	Hexes.forEach(element => { element.setClasses(`clickable`) })
+	
+	// Reset the board
+	refreshView()
+	drawCurrentWord()
+}
+
+function drawHistory() {
+	// console.log(`Drawing history`)
+	console.table(wordHistory)
+	if(verbose) { console.table(wordHistory) }
+	for (var i = 1; i < wordHistory.length; i++) {
+		console.log(wordHistory[i])
+		if(wordHistory[i] != null) {
+			var element = gameBoard.text(wordHistory[i].word)
+			console.log(`Drawing ${wordHistory[i].word} in ${wordHistory[i].color}`)
+		element.fill(wordHistory[i].color)
+		element.move(textSpacingHeight, yCanvasCenter + textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
+		}
+	}
 }
 
 // <> Helper Functions
@@ -376,18 +480,7 @@ var bluePrint = {
 // Run the constructor for each hex
 bluePrint.hexList.forEach(function (hex) { new Hex(hex.q, hex.r, hex.classes) })
 console.log(`results.length = ${results.length}`)
-for (i = 0; i < Hexes.length; i++) {
-	if (skipCenter == true && Hexes[i].q == 0 && Hexes[i].r == 0) {
-		// Do nothing becuase the center should be blank
-	} else {
-		thisLetter = results.pop()
-		Hexes[i].letter = thisLetter;
-		console.log(`Assigning ${thisLetter} to hex ${Hexes[i].id}`)
-		Hexes[i].classes += "clickable"
-
-		console.log(`Hex ${Hexes[i].id} has classes ${Hexes[i].classes}`)
-	}
-}
+constructAllHexes()
 // Now that the board is initialized, draw it for the first time
 refreshView()
 firstload = false
