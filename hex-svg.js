@@ -28,7 +28,7 @@ var attempts = 0
 var firstload = true
 
 // Gameplay global variables
-var currentColor = "red"
+var currentColor = "orange"
 var currentword = ""
 var lastCLickedHex = null
 
@@ -156,15 +156,21 @@ function refreshView() {
 }
 
 function drawCurrentWord() {
-	gameBoard.text(currentword)
+	
+	var wordObject = gameBoard.text(currentword)
 	// .fill('#fff')
 	// .move(canvasCenter.x - 1.5 * hexRadius, canvasCenter.y - hexHeight / 2)
-	var wordObject = gameBoard.text(currentword).fill('#040')
+	 wordObject.text(currentword).fill(currentColor).stroke('#000')
+	 .move(50, 50)
 		.font({
 			family: 'monospace'
 			, weight: 'bold'
 			, size: 50
 			, anchor: 'start'
+		})
+		.on('click', function () {
+			console.log(`Clicked currentword`)
+			endTurn()
 		})
 	console.log(`Current word: ${currentword}`)
 
@@ -217,7 +223,7 @@ function endTurn() {
 	// Clear the current word
 	currentword = ""
 	// Switch the current player to the next player
-	currentColor = (currentColor == "red") ? "blue" : "red"
+	currentColor = (currentColor == "orange") ? "blue" : "orange"
 	// Clear the last clicked hex
 	lastCLickedHex = null
 }
