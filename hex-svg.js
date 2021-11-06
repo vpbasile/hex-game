@@ -327,7 +327,7 @@ function drawHistory() {
 			var element = gameBoard.text(wordHistory[i].word)
 			console.log(`Drawing ${wordHistory[i].word} in ${wordHistory[i].color}`)
 		element.fill(wordHistory[i].color)
-		element.move(textSpacingHeight, yCanvasCenter + textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
+		element.move(textSpacingHeight, yCanvasSize - textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
 		}
 	}
 }
