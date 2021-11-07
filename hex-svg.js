@@ -1,14 +1,17 @@
 // <> DOM Elements
 const replaceMe = document.getElementById('replaceMe');
+const historyList = document.getElementById('historyList')
+const submitButton = document.getElementById("submitButton")
 
 // Settings Variables and Constants
+const backgroundColor = '#000'
 const verbose = false
 const skipCenter = true
 // const hexRadius = 50
 var hexRadius
 const separationMultiplier = 1.1
 const textSize = 50
-const textSpacingHeight = textSize*1.2
+const textSpacingHeight = textSize * 1.2
 // <> Calculated global variables
 // With pointy top, they’re at 30°, 90°, 150°, 210°, 270°, 330°
 const cornerAngles = [30, 90, 150, 210, 270, 330]
@@ -105,7 +108,7 @@ class Hex {
 			.stroke(`none`)
 			.fill("#000")
 			.attr('id', id)
-			.attr('class', `hex ${this.classes}`)
+			.attr('class', `${this.classes}`)
 			.attr('stroke-width', '2')
 			.attr('stroke', '#000')
 			.attr('q', this.q)
@@ -124,7 +127,9 @@ class Hex {
 		var currentLetter = this.letter
 		if (currentLetter != undefined) {
 			var displayLetter = gameBoard.text(currentLetter)
-			displayLetter.fill('#040')
+			displayLetter
+				// .attr('class', `${this.classes}`)
+				.fill(`white`)
 				.move(x - hexRadius, y)
 				.font({
 					family: 'monospace'
@@ -132,10 +137,10 @@ class Hex {
 					, size: 40
 					, anchor: 'middle'
 				})
-				displayLetter.on('click', function () {
-					debug(onClickString)
-					handleClick(id);
-				})
+			displayLetter.on('click', function () {
+				debug(onClickString)
+				handleClick(id);
+			})
 		} else { if (firstload) { console.log(`Hex ${this.id} has no letter.`) } }
 		if (verbose) {
 			presentationString += `${this.id}\n(${this.q},${this.r})`
@@ -144,7 +149,7 @@ class Hex {
 	}
 
 	isOrigin() {
-		if(this.q == 0 && this.r == 0) {  return true }
+		if (this.q == 0 && this.r == 0) { return true }
 		else { return false }
 	}
 
@@ -216,7 +221,7 @@ function refreshView() {
 	// Draw the current word
 	drawCurrentWord()
 	// Draw the history
-	drawHistory()
+	// drawHistory()
 }
 
 function drawCurrentWord() {
@@ -263,7 +268,7 @@ function successfulClick(clickedHex) {
 	if (lastCLickedHex != null) { lastCLickedHex.setClasses(`${currentColor}`) }
 	// Now update the new last clicked hex
 	lastCLickedHex = clickedHex
-	clickedHex.setClasses(`${currentColor} lastclick clickable`)
+	clickedHex.setClasses(`${currentColor} lastclick`)
 	// Add the letter to the word
 	currentword += clickedHex.letter
 	// Update the word display
@@ -279,13 +284,13 @@ function successfulClick(clickedHex) {
 			} else { element.setClasses(`locked`) }
 		}
 	})
-	
+
 	// Lock every hex that is not a neighbor of the clicked hex
 	Hexes.forEach(element => {
 		if (!clickedHex.isNeighbor(element)) {
 		}
 	})
-	
+
 	gameBoard.clear()
 	refreshView()
 
@@ -301,17 +306,20 @@ function successfulClick(clickedHex) {
 
 function endTurn() {
 	console.log(`${currentTurn} The ${colors[currentPlayer]} player enterd ${currentword}`)
-	wordHistory[currentTurn] = {"word": currentword, "color": currentColor}
+	historyList.innerHTML += `<li class="${colors[currentPlayer]}">${currentword}</li>`
+	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
 	// Clear the current word
 	currentword = ""
 	// Switch the current player to the next player
 	currentPlayer = (currentPlayer + 1) % players.length
+	submitButton.classList.toggle(currentColor)
 	currentColor = colors[currentPlayer]
+	submitButton.classList.toggle(currentColor)
 	// Clear the last clicked hex
 	lastCLickedHex = null
 	Hexes.forEach(element => { element.setClasses(`clickable`) })
-	
+
 	// Reset the board
 	refreshView()
 	drawCurrentWord()
@@ -320,18 +328,33 @@ function endTurn() {
 function drawHistory() {
 	// console.log(`Drawing history`)
 	console.table(wordHistory)
-	if(verbose) { console.table(wordHistory) }
+	if (verbose) { console.table(wordHistory) }
 	for (var i = 1; i < wordHistory.length; i++) {
 		console.log(wordHistory[i])
-		if(wordHistory[i] != null) {
+		if (wordHistory[i] != null) {
 			var element = gameBoard.text(wordHistory[i].word)
 			console.log(`Drawing ${wordHistory[i].word} in ${wordHistory[i].color}`)
-		element.fill(wordHistory[i].color)
-		element.move(textSpacingHeight, yCanvasSize - textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
+			element.fill(wordHistory[i].color)
+			element.move(textSpacingHeight, yCanvasSize - textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
 		}
 	}
 }
 
+
+
+// function displayHistory() {
+// 	console.log(`Displaying history`)
+// 	for (var i = 0; i < wordHistory.length; i++) {
+// 		var word = wordHistory[i].word
+// 		var color = wordHistory[i].color
+// 		appendHistoryItem(word, color)
+// 		var li = document.createElement('li')
+// 		li.innerText = word
+// 		li.classList.add(color)
+// 		document.getElementById('history').appendChild(li)
+// 	}
+
+// }
 // <> Helper Functions
 function debug(string) { if (verbose) { console.log(string) } }
 
@@ -341,10 +364,12 @@ function degtoRad(degrees) { return degrees * Math.PI / 180 }
 function init() {
 	// Determine the canvas size
 	xCanvasSize = Math.floor(window.innerWidth * viewportScale)
-	xCanvasCenter = Math.floor(xCanvasSize / 2)
 	yCanvasSize = Math.floor(window.innerHeight * viewportScale)
-	yCanvasCenter = Math.floor(yCanvasSize / 2)
 	var minDimension = Math.min(xCanvasSize, yCanvasSize)
+	xCanvasSize = minDimension
+	yCanvasSize = minDimension
+	xCanvasCenter = Math.floor(xCanvasSize / 2)
+	yCanvasCenter = Math.floor(yCanvasSize / 2)
 	hexRadius = minDimension / 14
 	hexWidth = hexRadius * 2 * Math.cos(degtoRad(30))
 	hexHeight = 2 * hexRadius
@@ -485,3 +510,4 @@ constructAllHexes()
 refreshView()
 firstload = false
 console.log(`Created ${Hexes.length} hexes`)
+submitButton.classList.toggle(currentColor)

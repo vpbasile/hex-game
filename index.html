@@ -3,32 +3,76 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="./style.css">
+	<!-- Latest compiled and minified CSS -->
+
 	<style>
+		:root {
+			--orange-light: orange;
+			--orange-dark: rgb(105, 70, 5);
+			--blue-light: rgb(0, 213, 255);
+			--blue-dark: rgb(0, 0, 255);
+		}
+
+		body {
+			background: black no-repeat center;
+			font-family: 'monospace';
+			font-weight: 'bold';
+			font-size: 40px;
+
+		}
+
 		.container {
 			width: 100%;
 			height: 100%;
-			display: flex;
-			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 
 		}
-		
-		body { background: url('soil-square.jpg') url('https://unsplash.com/photos/iB1JuJyQob4') cornflowerblue no-repeat center }  /* พื้นหลังของเว็บไซต์ */
-		
-		#replaceMe {
-		  background: rgba(0,0,0,1);
+
+		.container {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
 		}
-		
-		.hex.blue { fill:blue; }
-		.hex.red { fill:red; }
-		.hex.clickable { fill:hsla(150,100%,50%,0.5); }
-		.hex.yellow { fill:yellow; }
-		.hex.orange { fill:orange; }
-		.hex.purple { fill:purple; }
-		.hex.pink { fill:pink; }
-		.hex.brown { fill:brown; }
-		.hex.black { fill:black; stroke: white;}
+
+		.header {
+			grid-column: span 12;
+		}
+
+		#replaceMe {
+			grid-column: span 8;
+			background: rgba(0, 0, 0, 1);
+		}
+
+		#scoreBoard {
+			grid-column: span 4;
+		}
+
+		.hex.clickable {
+			fill: hsla(150, 100%, 50%, 0.5);
+		}
+
+		.blue {
+			fill: var(--blue-dark);
+			stroke: var(--blue-light);
+			background-color: var(--blue-dark);
+			color: var(--blue-light);
+
+		}
+
+		.orange {
+			fill: var(--orange-dark);
+			stroke: var(--orange-light);
+			background-color: var(--orange-dark);
+			color: var(--orange-light);
+		}
+
+		.black {
+			fill: black;
+			stroke: white;
+			background-color: black;
+			color: white;
+		}
+
 
 		.lastclick {
 			stroke: whitesmoke;
@@ -39,19 +83,45 @@
 			filter: opacity(0.3);
 			fill: white;
 		}
-		
+
 
 		.hex.hex.clickable:hover {
 			/* fill: black; */
 			filter: brightness(90%) saturate(50%) opacity(1.0);
 		}
+
+		#submitButton {
+			font-family: 'monospace';
+			font-weight: 'bold';
+			padding: 3%;
+			font-size: 50px;
+			border-radius: 5%;
+		}
+
+		button {
+			background-color: black;
+		}
 	</style>
 </head>
 
 <body>
-	<div id='replaceMe'></div>
+	<div id='container' class='container'>
+		<div class="row">
+			<div id='scoreBoard'>
+				<div id="currentWordDisplay">
+					<button id="submitButton" class="" onclick="endTurn()">SUBMIT</button>
+				</div>
+			</div>
+			<ul id="historyList" class="list-inline"></ul>
+			<div id='replaceMe'></div>
+		</div>
+	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
 <script src='hex-svg.js'></script>
 
 </html>
