@@ -1,7 +1,8 @@
 // <> DOM Elements
-const replaceMe = document.getElementById('replaceMe');
+const replaceGameBoard = document.getElementById('gameBoard');
 const historyList = document.getElementById('historyList')
 const submitButton = document.getElementById("submitButton")
+const currentWordDisplay = document.getElementById('currentWordDisplay')
 
 // Settings Variables and Constants
 const backgroundColor = '#000'
@@ -31,6 +32,8 @@ var canvasCenter
 var viewportScale = 1
 var attempts = 0
 var firstload = true
+
+const placeholderText = "[Touch a letter]"
 
 // Gameplay global variables
 const colors = ['orange', 'blue']
@@ -172,21 +175,6 @@ class Hex {
 		return foundNeighbor
 	}
 
-	// var cube_direction_vectors = [
-	// 	Cube(+1, 0, -1), Cube(+1, -1, 0), Cube(0, -1, +1), 
-	// 	Cube(-1, 0, +1), Cube(-1, +1, 0), Cube(0, +1, -1), 
-	// ]
-
-	// function cube_direction(direction):
-	// 	return cube_direction_vectors[direction]
-
-	// function cube_add(hex, vec):
-	// 	return Cube(hex.q + vec.q, hex.r + vec.q, hex.s + vec.s)
-
-	// function cube_neighbor(cube, direction):
-	// 	return cube_add(cube, cube_direction(direction))
-
-
 } // End of class Hex
 
 // <> Hex-altering Functions
@@ -219,29 +207,9 @@ function refreshView() {
 	// Draw all the hexes with their letters
 	Hexes.forEach(element => { element.draw() })
 	// Draw the current word
-	drawCurrentWord()
+	currentWordDisplay.innerText = currentword
 	// Draw the history
 	// drawHistory()
-}
-
-function drawCurrentWord() {
-
-	var wordObject = gameBoard.text(currentword)
-	// .fill('#fff')
-	// .move(canvasCenter.x - 1.5 * hexRadius, canvasCenter.y - hexHeight / 2)
-	wordObject.text(currentword).fill(currentColor).stroke('#000')
-		.move(textSpacingHeight, textSpacingHeight)
-		.font({
-			family: 'monospace'
-			, weight: 'bold'
-			, size: textSize
-			, anchor: 'start'
-		})
-		.on('click', function () {
-			endTurn()
-		})
-	console.log(`Current word: ${currentword}`)
-
 }
 
 function handleClick(hexId) {
@@ -272,7 +240,7 @@ function successfulClick(clickedHex) {
 	// Add the letter to the word
 	currentword += clickedHex.letter
 	// Update the word display
-	drawCurrentWord()
+	currentWordDisplay.innerText = currentword
 
 	Hexes.forEach(element => {
 		if (element.classes.includes(currentColor)) {
@@ -309,52 +277,44 @@ function endTurn() {
 	historyList.innerHTML += `<li class="${colors[currentPlayer]}">${currentword}</li>`
 	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
-	// Clear the current word
-	currentword = ""
 	// Switch the current player to the next player
 	currentPlayer = (currentPlayer + 1) % players.length
 	submitButton.classList.toggle(currentColor)
+	currentWordDisplay.classList.toggle(currentColor)
 	currentColor = colors[currentPlayer]
 	submitButton.classList.toggle(currentColor)
+	currentWordDisplay.classList.toggle(currentColor)
+	// Clear the current word
+	currentWordDisplay.innerText = placeholderText
+	currentword = ""
+	// Clear the last clicked hex
+	lastCLickedHex = null
+	Hexes.forEach(element => { element.setClasses(`clickable`) })
+	clearTurn()
+	// Reset the board
+	refreshView()
+	currentWordDisplay.innerText = placeholderText
+
+}
+
+function clearTurn() {
+	// Clear the current word
+	currentWordDisplay.innerText = placeholderText
+	currentword = ""
 	// Clear the last clicked hex
 	lastCLickedHex = null
 	Hexes.forEach(element => { element.setClasses(`clickable`) })
 
 	// Reset the board
 	refreshView()
-	drawCurrentWord()
+	currentWordDisplay.innerText = placeholderText
 }
 
-function drawHistory() {
-	// console.log(`Drawing history`)
-	console.table(wordHistory)
-	if (verbose) { console.table(wordHistory) }
-	for (var i = 1; i < wordHistory.length; i++) {
-		console.log(wordHistory[i])
-		if (wordHistory[i] != null) {
-			var element = gameBoard.text(wordHistory[i].word)
-			console.log(`Drawing ${wordHistory[i].word} in ${wordHistory[i].color}`)
-			element.fill(wordHistory[i].color)
-			element.move(textSpacingHeight, yCanvasSize - textSpacingHeight * i).font({ family: 'monospace', weight: 'bold', size: textSize, anchor: 'start' })
-		}
-	}
+function clearCurrentWord() {
+	currentword = ""
+	currentWordDisplay.innerText = placeholderText
 }
 
-
-
-// function displayHistory() {
-// 	console.log(`Displaying history`)
-// 	for (var i = 0; i < wordHistory.length; i++) {
-// 		var word = wordHistory[i].word
-// 		var color = wordHistory[i].color
-// 		appendHistoryItem(word, color)
-// 		var li = document.createElement('li')
-// 		li.innerText = word
-// 		li.classList.add(color)
-// 		document.getElementById('history').appendChild(li)
-// 	}
-
-// }
 // <> Helper Functions
 function debug(string) { if (verbose) { console.log(string) } }
 
@@ -374,10 +334,13 @@ function init() {
 	hexWidth = hexRadius * 2 * Math.cos(degtoRad(30))
 	hexHeight = 2 * hexRadius
 	// Create the SVG
-	gameBoard = SVG().size(xCanvasSize, yCanvasSize).addTo(replaceMe)
+	gameBoard = SVG().size(xCanvasSize, yCanvasSize).addTo(replaceGameBoard)
 	canvasCenter = new Coordinate2d(xCanvasCenter, yCanvasCenter)
 	debug(`Canvas size is ${xCanvasSize} by ${yCanvasSize}`)
 }
+
+
+// <> Main
 
 // <> Randomize the board
 // Initialize stuff
@@ -446,8 +409,6 @@ function random_face(arr) {//random a upside face from a dice
 	var upside_face = arr[index];
 	return upside_face;
 }
-
-// <> Main
 var results = []
 init()
 
@@ -511,3 +472,5 @@ refreshView()
 firstload = false
 console.log(`Created ${Hexes.length} hexes`)
 submitButton.classList.toggle(currentColor)
+currentWordDisplay.classList.toggle(currentColor)
+currentWordDisplay.innerText = placeholderText
