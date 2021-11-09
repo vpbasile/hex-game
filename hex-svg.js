@@ -3,6 +3,7 @@ const replaceGameBoard = document.getElementById('gameBoard');
 const historyList = document.getElementById('historyList')
 const submitButton = document.getElementById("submitButton")
 const currentWordDisplay = document.getElementById('currentWordDisplay')
+const scoredisplay = document.getElementById('scoreDisplay')
 
 // Settings Variables and Constants
 const backgroundColor = '#000'
@@ -18,32 +19,36 @@ const textSpacingHeight = textSize * 1.2
 const cornerAngles = [30, 90, 150, 210, 270, 330]
 // <> Initialized global variables
 var Hexes = []
-var gameBoard
+var hexSize = { "x": "", "y": "" }
 var hexUID = 0
 var ring = 0
-var xCanvasSize
-var xCanvasCenter
-var yCanvasSize
-var yCanvasCenter
-var hexHeight
-var hexWidth
 var canvasSize
-var canvasCenter
+var canvasCenter = { "x":"", "y":"" }
 var viewportScale = 1
 var attempts = 0
 var firstload = true
+var orientationScreen
+var orientationHex = "pointy-top"
 
+var gameBoard
 const placeholderText = "[Touch a letter]"
 
 // Gameplay global variables
 const colors = ['orange', 'blue']
-const players = [0, 1]
+var players= [ 
+	{"id":0, "color":"orange", "score":0},
+	{"id":1, "color":"blue", "score":0}
+]
 var currentPlayer = 0
 var currentTurn = 1
-var currentColor = colors[currentPlayer]
+var currentColor = players[currentPlayer].color
 var wordHistory = []
-var currentword = ""
+var currentword = ""	
+var currentWordScore = 0
 var lastCLickedHex = null
+var letterScores = {
+	"A": 1, "B": 3, "C": 3, "D": 2, "E": 1,	"F": 4, "G": 2, "H": 4, "I": 1,	"J": 8, "K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "QU": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10
+}
 
 // <> Class Definitions
 class Coordinate2d { constructor(x, y) { this.x = x; this.y = y; } }
@@ -84,7 +89,7 @@ class Hex {
 		var q = h.q
 		var x = (Math.sqrt(3.0) * q + Math.sqrt(3.0) / 2.0 * r) * hexRadius
 		x = separationMultiplier * x
-		var y = ((3 / 2) * r) * hexHeight / 2
+		var y = ((3 / 2) * r) * hexSize.y / 2
 		y = separationMultiplier * y
 		return new Coordinate2d(x, y);
 	}
@@ -92,18 +97,16 @@ class Hex {
 	draw() {
 		var polygonString = ""
 		var presentationString = ""
-		var xCenter = this.center.x
-		var yCenter = this.center.y
-		var x
-		var y
+		var hexCenter = this.hex_to_pixel(this)
+		var tempCoordinate = new Coordinate2d(0, 0)
 		var id = this.id
 		// Find the X and Y of each corner
 		cornerAngles.forEach(element => {
 			var theta = element * Math.PI / 180
-			x = Math.floor(canvasCenter.x + xCenter + hexRadius * Math.cos(theta))
-			y = Math.floor(canvasCenter.y + yCenter + hexRadius * Math.sin(theta))
+			tempCoordinate.x = Math.floor(canvasCenter.x + this.center.x + hexRadius * Math.cos(theta))
+			tempCoordinate.y = Math.floor(canvasCenter.y + this.center.y + hexRadius * Math.sin(theta))
 			if (polygonString != "") { polygonString += " " }
-			polygonString += `${x},${y}`
+			polygonString += `${tempCoordinate.x},${tempCoordinate.y}`
 		});
 		var onClickString = `Hex[${this.q},${this.r} clicked]`
 		// Save all of the important attributes on the polygon, so they can be loaded later
@@ -133,7 +136,7 @@ class Hex {
 			displayLetter
 				// .attr('class', `${this.classes}`)
 				.fill(`white`)
-				.move(x - hexRadius, y)
+				.move(canvasCenter.x + this.center.x, canvasCenter.y + this.center.y - hexSize.y / 5)
 				.font({
 					family: 'monospace'
 					, weight: 'bold'
@@ -146,8 +149,8 @@ class Hex {
 			})
 		} else { if (firstload) { console.log(`Hex ${this.id} has no letter.`) } }
 		if (verbose) {
-			presentationString += `${this.id}\n(${this.q},${this.r})`
-			gameBoard.text(presentationString).fill('#fff').move(x - 1.5 * hexRadius, y - hexHeight / 2)
+			// presentationString += `${this.id}\n(${this.q},${this.r})`
+			// gameBoard.text(presentationString).fill('#fff').move(x - 1.5 * hexRadius, y - hexSize.y / 2)
 		}
 	}
 
@@ -207,7 +210,7 @@ function refreshView() {
 	// Draw all the hexes with their letters
 	Hexes.forEach(element => { element.draw() })
 	// Draw the current word
-	currentWordDisplay.innerText = currentword
+	currentWordDisplay.innerText = `(${currentWordScore}) ${currentword}`
 	// Draw the history
 	// drawHistory()
 }
@@ -238,7 +241,9 @@ function successfulClick(clickedHex) {
 	lastCLickedHex = clickedHex
 	clickedHex.setClasses(`${currentColor} lastclick`)
 	// Add the letter to the word
-	currentword += clickedHex.letter
+	currentLetter = clickedHex.letter
+	currentword += currentLetter
+	currentWordScore += letterScores[currentLetter]
 	// Update the word display
 	currentWordDisplay.innerText = currentword
 
@@ -273,8 +278,9 @@ function successfulClick(clickedHex) {
 }
 
 function endTurn() {
-	console.log(`${currentTurn} The ${colors[currentPlayer]} player enterd ${currentword}`)
-	historyList.innerHTML += `<li class="${colors[currentPlayer]}">${currentword}</li>`
+	console.log(`${currentTurn} The ${players[currentPlayer].color} player enterd ${currentword} for ${currentWordScore} points.`)
+	players[currentPlayer].score += currentWordScore
+	historyList.innerHTML += `<li class="${colors[currentPlayer]}">(${currentWordScore})${currentword}</li>`
 	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
 	// Switch the current player to the next player
@@ -287,11 +293,17 @@ function endTurn() {
 	// Clear the current word
 	currentWordDisplay.innerText = placeholderText
 	currentword = ""
+	currentWordScore = 0
+	var scoreDisplayString = `
+	<span class='orange'>${players[0].score}</span>
+	<span class='blue'>${players[1].score}</span>
+	`
 	// Clear the last clicked hex
 	lastCLickedHex = null
 	Hexes.forEach(element => { element.setClasses(`clickable`) })
 	clearTurn()
 	// Reset the board
+	scoredisplay.innerHTML = scoreDisplayString
 	refreshView()
 	currentWordDisplay.innerText = placeholderText
 
@@ -321,22 +333,29 @@ function debug(string) { if (verbose) { console.log(string) } }
 // <> Math Functions
 function degtoRad(degrees) { return degrees * Math.PI / 180 }
 
-function init() {
+function initCanvas() {
 	// Determine the canvas size
-	xCanvasSize = Math.floor(window.innerWidth * viewportScale)
-	yCanvasSize = Math.floor(window.innerHeight * viewportScale)
-	var minDimension = Math.min(xCanvasSize, yCanvasSize)
-	xCanvasSize = minDimension
-	yCanvasSize = minDimension
-	xCanvasCenter = Math.floor(xCanvasSize / 2)
-	yCanvasCenter = Math.floor(yCanvasSize / 2)
+	// canvasSize.x = Math.floor(window.innerWidth * viewportScale)
+	// canvasSize.y = Math.floor(window.innerHeight * viewportScale)
+	canvasSize = {
+		"x": Math.floor(window.innerWidth * viewportScale),
+		"y": Math.floor(window.innerHeight * viewportScale)
+	}
+	if (canvasSize.x > canvasSize.y) { orientationScreen = "landscape" }
+	else { orientationScreen = "portrait" }
+	console.log(`${orientationScreen} screen`)
+	var minDimension = Math.min(canvasSize.x, canvasSize.y)
+	canvasSize.x = minDimension
+	canvasSize.y = minDimension
+	canvasCenter.x = Math.floor(canvasSize.x / 2)
+	canvasCenter.y = Math.floor(canvasSize.y / 2)
 	hexRadius = minDimension / 14
-	hexWidth = hexRadius * 2 * Math.cos(degtoRad(30))
-	hexHeight = 2 * hexRadius
+	hexSize.x = hexRadius * 2 * Math.cos(degtoRad(30))
+	hexSize.y = 2 * hexRadius
 	// Create the SVG
-	gameBoard = SVG().size(xCanvasSize, yCanvasSize).addTo(replaceGameBoard)
-	canvasCenter = new Coordinate2d(xCanvasCenter, yCanvasCenter)
-	debug(`Canvas size is ${xCanvasSize} by ${yCanvasSize}`)
+	gameBoard = SVG().size(canvasSize.x, canvasSize.y).addTo(replaceGameBoard)
+	// canvasCenter = new Coordinate2d(canvasCenter.x, canvasCenter.y)
+	debug(`Canvas size is ${canvasSize.x} by ${canvasSize.y}`)
 }
 
 
@@ -410,7 +429,7 @@ function random_face(arr) {//random a upside face from a dice
 	return upside_face;
 }
 var results = []
-init()
+initCanvas()
 
 board_generate();
 board(results);

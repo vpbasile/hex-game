@@ -4,99 +4,99 @@
 	<meta charset="utf-8">
 	<link rel="./style.css">
 	<!-- Latest compiled and minified CSS -->
-	
+
 	<style>
-		
 		:root {
 			--orange-light: orange;
 			--orange-dark: rgb(105, 70, 5);
 			--blue-light: rgb(0, 213, 255);
 			--blue-dark: rgb(0, 0, 255);
 		}
-		
+
 		body {
 			background: black no-repeat center;
+			color: whitesmoke;
 			font-family: 'monospace';
 			font-weight: 'bold';
 			font-size: 40px;
-			
+
 		}
-		
+
 		.container {
 			width: 100%;
 			height: 100%;
 			justify-content: center;
 			align-items: center;
-			
+
 		}
-		
+
 		#gameBoard {
 			background: rgba(0, 0, 0, 1);
-			
+
 		}
 
 
 		#currentWordDisplay {
 			padding: 5px;
 		}
-		
+
 		li {
 			/* display: inline; */
 			padding: 10px;
 		}
-		
+
 		#scoreBoard {
-			position: absolute;
+			/* position: absolute;
 			right: 0;
-			bottom: 0;
+			bottom: 0; */
 			padding: 2%;
 		}
-		
-		
-		
+
+
+
 		.hex.clickable {
 			fill: hsla(150, 100%, 50%, 0.5);
 		}
-		
+
 		.blue {
 			fill: var(--blue-dark);
 			stroke: var(--blue-light);
 			background-color: var(--blue-dark);
 			color: var(--blue-light);
-			
+
 		}
-		
+
 		.orange {
 			fill: var(--orange-dark);
 			stroke: var(--orange-light);
 			background-color: var(--orange-dark);
 			color: var(--orange-light);
 		}
-		
+
 		.black {
 			fill: black;
 			stroke: white;
 			background-color: black;
 			color: white;
 		}
-		
-		
+
+
 		.lastclick {
 			stroke: whitesmoke;
 			stroke-width: 5;
 		}
-		
+
 		.locked {
 			filter: opacity(0.3);
 			fill: white;
 		}
-		
-		
+
+
 		.hex.hex.clickable:hover {
 			/* fill: black; */
 			filter: brightness(90%) saturate(50%) opacity(1.0);
 		}
-		
+
 		button {
 			background-color: black;
 			width: 100%;
@@ -105,36 +105,49 @@
 			padding: 3%;
 			font-size: 50px;
 			border-radius: 5%;
-		  margin: 10px;
+			margin: 10px;
 		}
 
 		/* #submitButton {} */
 
 		#clearButton {
-			color:white;
+			color: white;
 		}
-		
-		</style>
+
+		.flex-grid {
+			width: 100%;
+			display: flex;
+		}
+
+		.col {
+			flex: 1;
+		}
+	</style>
 </head>
 
 <body>
-	<div id='container' class='container'>
-		<div id='gameBoard'></div>
-		<div id='scoreBoard'>
-			<div id="currentWordDisplay">
-			</div>
-			<button id="submitButton" class="" onclick="endTurn()">SUBMIT</button>
-			<button id="clearButton" class="" onclick="clearTurn()">CLEAR</button>
+	<div id='gameBoard'></div>
+	<div class="flex-grid">
+		<div class="col">
+			<h2 id="scoreDisplay">0/0</h2>
 			<ul id="historyList" class="list-inline"></ul>
 		</div>
+		<div id='scoreBoard' class="col">
+			<div id="currentWordDisplay"></div>
+			<button id="submitButton" class="" onclick="endTurn()">SUBMIT</button>
+			<button id="clearButton" class="" onclick="clearTurn()">CLEAR</button>
+		</div>
+	</div>
+
+	</div>
 	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-	<script src="hex-dom.js"></script>
-	<script src='hex-svg.js'></script>
+	crossorigin="anonymous"></script> -->
+<!-- <script src="hex-dom.js"></script> -->
+<script src='hex-svg.js'></script>
 
 </html>
