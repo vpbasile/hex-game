@@ -23,7 +23,7 @@ var hexSize = { "x": "", "y": "" }
 var hexUID = 0
 var ring = 0
 var canvasSize
-var canvasCenter = { "x":"", "y":"" }
+var canvasCenter = { "x": "", "y": "" }
 var viewportScale = 1
 var attempts = 0
 var firstload = true
@@ -34,20 +34,20 @@ var gameBoard
 const placeholderText = "[Touch a letter]"
 
 // Gameplay global variables
-const colors = ['orange', 'blue']
-var players= [ 
-	{"id":0, "color":"orange", "score":0},
-	{"id":1, "color":"blue", "score":0}
+// const colors = ['orange', 'blue']
+var players = [
+	{ "id": 0, "color": "player0", "score": 0 },
+	{ "id": 1, "color": "player1", "score": 0 }
 ]
 var currentPlayer = 0
 var currentTurn = 1
 var currentColor = players[currentPlayer].color
 var wordHistory = []
-var currentword = ""	
+var currentword = ""
 var currentWordScore = 0
 var lastCLickedHex = null
 var letterScores = {
-	"A": 1, "B": 3, "C": 3, "D": 2, "E": 1,	"F": 4, "G": 2, "H": 4, "I": 1,	"J": 8, "K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "QU": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10
+	"A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1, "J": 8, "K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "QU": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10
 }
 
 // <> Class Definitions
@@ -280,23 +280,24 @@ function successfulClick(clickedHex) {
 function endTurn() {
 	console.log(`${currentTurn} The ${players[currentPlayer].color} player enterd ${currentword} for ${currentWordScore} points.`)
 	players[currentPlayer].score += currentWordScore
-	historyList.innerHTML += `<li class="${colors[currentPlayer]}">(${currentWordScore})${currentword}</li>`
+	historyList.innerHTML += `<li class="${currentColor}">(${currentWordScore})${currentword}</li>`
 	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
 	// Switch the current player to the next player
 	currentPlayer = (currentPlayer + 1) % players.length
 	submitButton.classList.toggle(currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
-	currentColor = colors[currentPlayer]
+	currentColor = players[currentPlayer].color
 	submitButton.classList.toggle(currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
 	// Clear the current word
 	currentWordDisplay.innerText = placeholderText
 	currentword = ""
 	currentWordScore = 0
-	var scoreDisplayString = `
-	<span class='orange'>${players[0].score}</span>
-	<span class='blue'>${players[1].score}</span>
+	var scoreDisplayString =
+		`
+	<span class='${players[0].color}'>${players[0].score}</span>
+	<span class='${players[1].color}'>${players[1].score}</span>
 	`
 	// Clear the last clicked hex
 	lastCLickedHex = null
@@ -306,7 +307,6 @@ function endTurn() {
 	scoredisplay.innerHTML = scoreDisplayString
 	refreshView()
 	currentWordDisplay.innerText = placeholderText
-
 }
 
 function clearTurn() {
@@ -487,6 +487,12 @@ bluePrint.hexList.forEach(function (hex) { new Hex(hex.q, hex.r, hex.classes) })
 console.log(`results.length = ${results.length}`)
 constructAllHexes()
 // Now that the board is initialized, draw it for the first time
+var scoreDisplayString =
+	`
+	<span class='${players[0].color}'>${players[0].score}</span>
+	<span class='${players[1].color}'>${players[1].score}</span>
+	`
+scoredisplay.innerHTML = scoreDisplayString
 refreshView()
 firstload = false
 console.log(`Created ${Hexes.length} hexes`)

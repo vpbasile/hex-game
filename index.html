@@ -3,19 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="./style.css">
+	<link rel="stylesheet" href="./honey.css">
 	<!-- Latest compiled and minified CSS -->
 
 	<style>
-		:root {
-			--orange-light: orange;
-			--orange-dark: rgb(105, 70, 5);
-			--blue-light: rgb(0, 213, 255);
-			--blue-dark: rgb(0, 0, 255);
-		}
-
 		body {
-			background: black no-repeat center;
-			color: whitesmoke;
 			font-family: 'monospace';
 			font-weight: 'bold';
 			font-size: 40px;
@@ -29,13 +21,6 @@
 			align-items: center;
 
 		}
-
-		#gameBoard {
-			background: rgba(0, 0, 0, 1);
-
-		}
-
-
 		#currentWordDisplay {
 			padding: 5px;
 		}
@@ -52,53 +37,12 @@
 			padding: 2%;
 		}
 
-
-
-		.hex.clickable {
-			fill: hsla(150, 100%, 50%, 0.5);
-		}
-
-		.blue {
-			fill: var(--blue-dark);
-			stroke: var(--blue-light);
-			background-color: var(--blue-dark);
-			color: var(--blue-light);
-
-		}
-
-		.orange {
-			fill: var(--orange-dark);
-			stroke: var(--orange-light);
-			background-color: var(--orange-dark);
-			color: var(--orange-light);
-		}
-
-		.black {
-			fill: black;
-			stroke: white;
-			background-color: black;
-			color: white;
-		}
-
-
 		.lastclick {
-			stroke: whitesmoke;
 			stroke-width: 5;
 		}
 
-		.locked {
-			filter: opacity(0.3);
-			fill: white;
-		}
-
-
-		.hex.hex.clickable:hover {
-			/* fill: black; */
-			filter: brightness(90%) saturate(50%) opacity(1.0);
-		}
 
 		button {
-			background-color: black;
 			width: 100%;
 			font-family: 'monospace';
 			font-weight: 'bold';
@@ -109,10 +53,6 @@
 		}
 
 		/* #submitButton {} */
-
-		#clearButton {
-			color: white;
-		}
 
 		.flex-grid {
 			width: 100%;
