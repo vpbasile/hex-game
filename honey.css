@@ -26,21 +26,21 @@ body {
 .hex.clickable {
 	fill: var(--honey-med);
 }
-
-.player1 {
-	fill: var(--green-dark);
-	stroke: var(--blue-light);
-	background-color: var(--green-dark);
-	color: var(--green-light);
-
-}
-
-.player0 {
+.player0,.purple {
 	fill: var(--purple-dark);
 	stroke: var(--purple-light);
 	background-color: var(--purple-dark);
 	color: var(--purple-light);
 }
+
+
+.player1,.green {
+	fill: var(--green-dark);
+	stroke: var(--blue-light);
+	background-color: var(--green-dark);
+	color: var(--green-light);
+
+}	
 
 
 .black {

@@ -2,80 +2,82 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="./style.css">
+	<!-- Include bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./honey.css">
 	<!-- Latest compiled and minified CSS -->
-
-	<style>
+	<style>		
+		
 		body {
 			font-family: 'monospace';
-			font-weight: 'bold';
+			font-weight: 700;
 			font-size: 40px;
-
+			text-align: center;
 		}
-
-		.container {
-			width: 100%;
-			height: 100%;
-			justify-content: center;
-			align-items: center;
-
+		
+		h2 {
+			font-size: 160px;
 		}
-		#currentWordDisplay {
+		
+		/* #currentWordDisplay {
 			padding: 5px;
+		} */
+
+		.inline {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			margin: 5px;
+			border: 1px solid black;
+			text-align: center;
+			vertical-align: middle;
 		}
 
 		li {
-			/* display: inline; */
 			padding: 10px;
+			list-style-type: none;
 		}
-
+		
 		#scoreBoard {
-			/* position: absolute;
-			right: 0;
-			bottom: 0; */
 			padding: 2%;
 		}
-
+		.score,.roundPad,li {
+			padding: 20px;
+			border-radius: 20px;
+			margin: 30px;
+		}
+		
 		.lastclick {
 			stroke-width: 5;
 		}
-
+		
 
 		button {
-			width: 100%;
-			font-family: 'monospace';
-			font-weight: 'bold';
-			padding: 3%;
 			font-size: 50px;
-			border-radius: 5%;
-			margin: 10px;
 		}
 
-		/* #submitButton {} */
-
-		.flex-grid {
-			width: 100%;
-			display: flex;
-		}
-
-		.col {
-			flex: 1;
-		}
 	</style>
 </head>
 
 <body>
-	<div id='gameBoard'></div>
-	<div class="flex-grid">
-		<div class="col">
-			<h2 id="scoreDisplay">0/0</h2>
-			<ul id="historyList" class="list-inline"></ul>
-		</div>
-		<div id='scoreBoard' class="col">
-			<div id="currentWordDisplay"></div>
-			<button id="submitButton" class="" onclick="endTurn()">SUBMIT</button>
-			<button id="clearButton" class="" onclick="clearTurn()">CLEAR</button>
+	<!-- <div class="flex-grid">
+	</div> -->
+	<div class="conatiner">
+		<div id='gameBoard' class='row'></div>
+		<div class="row">
+			<div id='statusBoard' class="col">
+				<div id="currentWordDisplay" class="roundPad"></div>
+				<button id="submitButton" class="roundPad" onclick="endTurn()">SUBMIT</button>
+				<button id="clearButton" class="roundPad" onclick="clearTurn()">CLEAR</button>
+			</div>
+			<div id='scoreBoard' class="col">
+				<h2 id="player0score" class="player0 score">0</h2>
+				<ul id="player0history" class="player0 playerHistory list-inline"></ul>
+				<h2 id="player1score" class="player1 score">0</h2>
+				<ul id="player1history" class="player1 playerHistory list-inline"></ul>
+				<!-- <h2 id="scoreDisplay"class="roundPad">0/0</h2>
+				<ul id="historyList" class="list-inline"></ul> -->
+			</div>
 		</div>
 	</div>
 

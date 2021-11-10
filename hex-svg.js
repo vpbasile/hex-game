@@ -1,9 +1,9 @@
 // <> DOM Elements
 const replaceGameBoard = document.getElementById('gameBoard');
-const historyList = document.getElementById('historyList')
+const historyDisplay = document.getElementById('historyList')
 const submitButton = document.getElementById("submitButton")
 const currentWordDisplay = document.getElementById('currentWordDisplay')
-const scoredisplay = document.getElementById('scoreDisplay')
+const player0scoredisplay = document.getElementById('player0scoredisplay')
 
 // Settings Variables and Constants
 const backgroundColor = '#000'
@@ -31,13 +31,12 @@ var orientationScreen
 var orientationHex = "pointy-top"
 
 var gameBoard
-const placeholderText = "[Touch a letter]"
+function placeholderText() { return `It is ${players[currentPlayer].color}'s turn. Touch a letter to begin.` }
 
 // Gameplay global variables
-// const colors = ['orange', 'blue']
 var players = [
-	{ "id": 0, "color": "player0", "score": 0 },
-	{ "id": 1, "color": "player1", "score": 0 }
+	{ "id": 0, "color": "purple", "score": 0, "history":[] },
+	{ "id": 1, "color": "green", "score": 0 , "history":[] }
 ]
 var currentPlayer = 0
 var currentTurn = 1
@@ -277,10 +276,24 @@ function successfulClick(clickedHex) {
 	// Lock all the neighbors
 }
 
+function appendToHistory(player,word) {
+	// Add the word to the history
+	players[player].history.push(word)
+	// console.log(tempstring)
+	var tempItem = document.createElement("li")
+	tempItem.innerText = `${currentword}(${currentWordScore})`
+	document.getElementById(`player${currentPlayer}history`).appendChild(tempItem)
+	// Update the history display
+	// drawHistory()
+}
+
 function endTurn() {
 	console.log(`${currentTurn} The ${players[currentPlayer].color} player enterd ${currentword} for ${currentWordScore} points.`)
 	players[currentPlayer].score += currentWordScore
-	historyList.innerHTML += `<li class="${currentColor}">(${currentWordScore})${currentword}</li>`
+	var tempstring = `player${currentPlayer}score`
+	document.getElementById(tempstring).innerText = players[currentPlayer].score
+	// historyDisplay.innerHTML += `<li class="${currentColor}">(${currentWordScore})${currentword}</li>`
+	appendToHistory(currentPlayer,currentword) // Add the word to the history
 	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
 	// Switch the current player to the next player
@@ -291,27 +304,27 @@ function endTurn() {
 	submitButton.classList.toggle(currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
 	// Clear the current word
-	currentWordDisplay.innerText = placeholderText
+	currentWordDisplay.innerText = placeholderText()
 	currentword = ""
 	currentWordScore = 0
-	var scoreDisplayString =
-		`
-	<span class='${players[0].color}'>${players[0].score}</span>
-	<span class='${players[1].color}'>${players[1].score}</span>
-	`
+	// var scoreDisplayString =
+	// 	`
+	// <span class='${players[0].color} score'>${players[0].score}</span>
+	// <span class='${players[1].color} score'>${players[1].score}</span>
+	// `
 	// Clear the last clicked hex
 	lastCLickedHex = null
 	Hexes.forEach(element => { element.setClasses(`clickable`) })
 	clearTurn()
 	// Reset the board
-	scoredisplay.innerHTML = scoreDisplayString
+	// scoredisplay.innerHTML = scoreDisplayString
 	refreshView()
-	currentWordDisplay.innerText = placeholderText
+	currentWordDisplay.innerText = placeholderText()
 }
 
 function clearTurn() {
 	// Clear the current word
-	currentWordDisplay.innerText = placeholderText
+	// currentWordDisplay.innerText = placeholderText
 	currentword = ""
 	// Clear the last clicked hex
 	lastCLickedHex = null
@@ -319,12 +332,12 @@ function clearTurn() {
 
 	// Reset the board
 	refreshView()
-	currentWordDisplay.innerText = placeholderText
+	// currentWordDisplay.innerText = placeholderText
 }
 
 function clearCurrentWord() {
 	currentword = ""
-	currentWordDisplay.innerText = placeholderText
+	// currentWordDisplay.innerText = placeholderText()
 }
 
 // <> Helper Functions
@@ -487,15 +500,17 @@ bluePrint.hexList.forEach(function (hex) { new Hex(hex.q, hex.r, hex.classes) })
 console.log(`results.length = ${results.length}`)
 constructAllHexes()
 // Now that the board is initialized, draw it for the first time
-var scoreDisplayString =
-	`
-	<span class='${players[0].color}'>${players[0].score}</span>
-	<span class='${players[1].color}'>${players[1].score}</span>
-	`
-scoredisplay.innerHTML = scoreDisplayString
+// var scoreDisplayString =
+// 	`
+// 	<span class='${players[0].color} score'>${players[0].score}</span>
+// 	<span class='${players[1].color} score'>${players[1].score}</span>
+// 	`
+// scoredisplay.innerHTML = scoreDisplayString
 refreshView()
 firstload = false
 console.log(`Created ${Hexes.length} hexes`)
 submitButton.classList.toggle(currentColor)
 currentWordDisplay.classList.toggle(currentColor)
-currentWordDisplay.innerText = placeholderText
+currentWordDisplay.innerText = placeholderText()
+document.getElementById("player0history").innerText = "-"
+document.getElementById('player1history').innerText = "-"
