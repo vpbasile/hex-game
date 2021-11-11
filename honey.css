@@ -19,8 +19,7 @@ body {
 }
 
 #gameBoard {
-	background: rgba(0, 0, 0, 1);
-
+	background-color: var(--honey-dark);
 }
 
 .hex.clickable {
@@ -31,6 +30,7 @@ body {
 	stroke: var(--purple-light);
 	background-color: var(--purple-dark);
 	color: var(--purple-light);
+	border-color: var(--purple-med);
 }
 
 
@@ -39,8 +39,16 @@ body {
 	stroke: var(--blue-light);
 	background-color: var(--green-dark);
 	color: var(--green-light);
-
+	border-color: var(--green-med);
 }	
+
+.honey {
+	fill: var(--honey-dark);
+	stroke: var(--honey-light);
+	background-color: var(--honey-dark);
+	color: var(--honey-light);
+	border-color: var(--honey-med);
+}
 
 
 .black {
@@ -52,7 +60,7 @@ body {
 
 
 .lastclick {
-	stroke: whitesmoke;
+	stroke: var(--honey-light);
 	stroke-width: 5;
 }
 
@@ -71,8 +79,14 @@ button {
 	background-color: black;
 }
 
-/* #submitButton {} */
-
+#submitButton {
+	background-color: var(--honey-med);
+}
+/* 
 #clearButton {
 	color: white;
+} */
+
+#statusBoard * {
+	padding: 1%;
 }

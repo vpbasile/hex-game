@@ -209,7 +209,7 @@ function refreshView() {
 	// Draw all the hexes with their letters
 	Hexes.forEach(element => { element.draw() })
 	// Draw the current word
-	currentWordDisplay.innerText = `(${currentWordScore}) ${currentword}`
+	currentWordDisplay.innerText = `${currentword} (${currentWordScore})`
 	// Draw the history
 	// drawHistory()
 }

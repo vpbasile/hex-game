@@ -2,36 +2,47 @@
 
 <head>
 	<meta charset="utf-8">
-	<!-- Include bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Pull in Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" href="./honey.css">
 	<!-- Latest compiled and minified CSS -->
-	<style>		
-		
+	<style>
 		body {
 			font-family: 'monospace';
 			font-weight: 700;
 			font-size: 40px;
 			text-align: center;
 		}
-		
+
 		h2 {
 			font-size: 160px;
 		}
-		
-		/* #currentWordDisplay {
-			padding: 5px;
-		} */
 
-		.inline {
-			display: inline-block;
-			width: 100px;
-			height: 100px;
-			margin: 5px;
-			border: 1px solid black;
-			text-align: center;
-			vertical-align: middle;
+		button {
+			font-size: 50px;
+			width: 100%;
 		}
+
+
+		#statusBoard,
+		#scoreBoard {
+			padding: 2%;
+		}
+
+		#statusBoard *,
+		#scoreBoard * {
+			margin: 1%;
+			border-radius: 10px;
+			padding: 5px;
+		}
+
+
+		/*		
 
 		li {
 			padding: 10px;
@@ -39,7 +50,6 @@
 		}
 		
 		#scoreBoard {
-			padding: 2%;
 		}
 		.score,.roundPad,li {
 			padding: 20px;
@@ -52,10 +62,10 @@
 		}
 		
 
-		button {
-			font-size: 50px;
-		}
 
+		 .half {
+			width: 50%;
+		} */
 	</style>
 </head>
 
@@ -64,21 +74,27 @@
 	</div> -->
 	<div class="conatiner">
 		<div id='gameBoard' class='row'></div>
-		<div class="row">
-			<div id='statusBoard' class="col">
-				<div id="currentWordDisplay" class="roundPad"></div>
-				<button id="submitButton" class="roundPad" onclick="endTurn()">SUBMIT</button>
-				<button id="clearButton" class="roundPad" onclick="clearTurn()">CLEAR</button>
+		<div id='statusBoard' class="row honey rounded m-2">
+			<div id="currentWordDisplay" class="col honey">
 			</div>
-			<div id='scoreBoard' class="col">
-				<h2 id="player0score" class="player0 score">0</h2>
-				<ul id="player0history" class="player0 playerHistory list-inline"></ul>
-				<h2 id="player1score" class="player1 score">0</h2>
-				<ul id="player1history" class="player1 playerHistory list-inline"></ul>
-				<!-- <h2 id="scoreDisplay"class="roundPad">0/0</h2>
-				<ul id="historyList" class="list-inline"></ul> -->
+			<div class="col">
+				<button id="submitButton" class="honey" onclick="endTurn()">SUBMIT</button>
+				<button id="clearButton" class="honey" onclick="clearTurn()">CLEAR</button>
 			</div>
 		</div>
+		<div id='scoreBoard' class="col row">
+			<div class="col row player0">
+				<h2 id="player0score" class="col score">0</h2>
+				<ul id="player0history" class="col playerHistory list-inline"></ul>
+			</div>
+			<div class="col row player1">
+				<h2 id="player1score" class="col score">0</h2>
+				<ul id="player1history" class="col playerHistory list-inline"></ul>
+			</div>
+			<!-- <h2 id="scoreDisplay"class="roundPad">0/0</h2>
+				<ul id="historyList" class="list-inline"></ul> -->
+		</div>
+
 	</div>
 
 	</div>
