@@ -8,7 +8,7 @@ const player0scoredisplay = document.getElementById('player0scoredisplay')
 // Settings Variables and Constants
 const backgroundColor = '#000'
 const verbose = false
-const skipCenter = true
+const skipCenter = false
 // const hexRadius = 50
 var hexRadius
 const separationMultiplier = 1.1
@@ -35,8 +35,8 @@ function placeholderText() { return `It is ${players[currentPlayer].color}'s tur
 
 // Gameplay global variables
 var players = [
-	{ "id": 0, "color": "purple", "score": 0, "history":[] },
-	{ "id": 1, "color": "green", "score": 0 , "history":[] }
+	{ "id": 0, "color": "purple", "score": 0, "history": [] },
+	{ "id": 1, "color": "green", "score": 0, "history": [] }
 ]
 var currentPlayer = 0
 var currentTurn = 1
@@ -130,6 +130,18 @@ class Hex {
 
 		// If there is a letter, then draw it and make the hex clickable
 		var currentLetter = this.letter
+		// If currentlter, then make it clickable
+		if (currentLetter == 'enter') {
+			gameBoard.fill(`white`)
+				.move(canvasCenter.x + this.center.x, canvasCenter.y + this.center.y - hexSize.y / 5)
+				.font({
+					family: 'monospace'
+					, weight: 'bold'
+					, size: 40
+					, anchor: 'middle'
+				})
+
+		}
 		if (currentLetter != undefined) {
 			var displayLetter = gameBoard.text(currentLetter)
 			displayLetter
@@ -160,7 +172,7 @@ class Hex {
 
 	setClasses(classes) {
 		this.classes = ""
-		if (skipCenter == true && this.isOrigin()) {
+		if (skipCenter == true && this.isOrigin()==444444) {
 			// Do nothing becuase the center should be blank
 			this.classes = "hex locked black"
 		} else {
@@ -182,11 +194,13 @@ class Hex {
 // <> Hex-altering Functions
 
 function constructAllHexes() {
+	// Make the grid of hexes
 	for (i = 0; i < Hexes.length; i++) {
 		var currentHex = Hexes[i];
-		if (currentHex.isOrigin()) {
+		if (currentHex.isOrigin()==4444444444) {
 			console.log(`Creating origin`)
 		} else {
+
 			thisLetter = results.pop()
 			currentHex.letter = thisLetter;
 			console.log(`Assigning ${thisLetter} to hex ${currentHex.id}`)
@@ -194,6 +208,7 @@ function constructAllHexes() {
 			console.log(`Hex ${currentHex.id} has classes ${currentHex.classes}`)
 		}
 	}
+
 }
 
 function addTo(hexA, hexB) { return new Hex(hexA.q + hexB.q, hexA.r + hexB.r, hexA.s + hexB.s) }
@@ -216,17 +231,26 @@ function refreshView() {
 
 function handleClick(hexId) {
 	var clickedHex = Hexes[hexId]
-	if (clickedHex.letter == undefined) {
-		console.log(`Hex ${hexId} has no letter.`)
-	} else {
-		debug(`Hex ${hexId} clicked.`)
-		debug(`Letter ${clickedHex.letter}`)
-		// If the click is on a clickable hex, then add the letter to the current word
-		console.log(clickedHex.classes)
-		if (clickedHex.classes == "hex clickable") {
-			// The hex has a letter and is clickable, so perform the action, so claim the hex for the current player
-			successfulClick(clickedHex)
-		}
+	var hexLetter = clickedHex.letter
+	console.log(`Clicked hex at q:${clickedHex.q} r:${clickedHex.r}`)
+	switch (hexLetter) {
+		case undefined:
+			console.log(`Clicked empty hex`)
+			break
+		case 'enter':
+			console.log(`Clicked enter`)
+			finishTurn()
+			break
+		case 'clear':
+			console.log(`Clicked clear`)
+			clearTurn()
+			break
+		default:
+			if (clickedHex.classes == "hex clickable") {
+				// The hex has a letter and is clickable, so perform the action, so claim the hex for the current player
+				successfulClick(clickedHex)
+			}
+
 	}
 }
 
@@ -276,7 +300,7 @@ function successfulClick(clickedHex) {
 	// Lock all the neighbors
 }
 
-function appendToHistory(player,word) {
+function appendToHistory(player, word) {
 	// Add the word to the history
 	players[player].history.push(word)
 	// console.log(tempstring)
@@ -287,13 +311,13 @@ function appendToHistory(player,word) {
 	// drawHistory()
 }
 
-function endTurn() {
+function finishTurn() {
 	console.log(`${currentTurn} The ${players[currentPlayer].color} player enterd ${currentword} for ${currentWordScore} points.`)
 	players[currentPlayer].score += currentWordScore
 	var tempstring = `player${currentPlayer}score`
 	document.getElementById(tempstring).innerText = players[currentPlayer].score
 	// historyDisplay.innerHTML += `<li class="${currentColor}">(${currentWordScore})${currentword}</li>`
-	appendToHistory(currentPlayer,currentword) // Add the word to the history
+	appendToHistory(currentPlayer, currentword) // Add the word to the history
 	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
 	currentTurn++
 	// Switch the current player to the next player
@@ -326,6 +350,7 @@ function clearTurn() {
 	// Clear the current word
 	// currentWordDisplay.innerText = placeholderText
 	currentword = ""
+	currentWordScore = 0
 	// Clear the last clicked hex
 	lastCLickedHex = null
 	Hexes.forEach(element => { element.setClasses(`clickable`) })
@@ -380,6 +405,7 @@ var myDice1 = `rstqwx`
 var myDice2 = `eaozjy`
 var list = [
 	'aaafrs', 'aaeeee', 'aafirs', 'adennn', 'aeeeem', myDice1,
+	'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', myDice2,
 	'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', myDice2,
 	'ceiilt', 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', myDice1,
 	'dhlnor', 'dhlnor', 'eiiitt', 'emottt', 'ensssu', myDice2,
@@ -450,12 +476,12 @@ board(results);
 
 // The blueprint stores the shape of the board
 var bluePrint = {
-	"name": "Calendar Board",
-	"description": "A calendar board",
-	"author": "Calendar Board",
+	"name": "Bee Spelling Board",
+	"description": "A bee spelling board",
+	"author": "Vincent",
 	"version": "1.0",
 	"hexList": [
-		{ "q": 0, "r": 0, "classes": "black" },
+		{ "q": 0, "r": 0, "classes": "" },
 		{ "q": -1, "r": 0, "classes": "" },
 		{ "q": -1, "r": 1, "classes": "" },
 		{ "q": 0, "r": -1, "classes": "" },
@@ -499,6 +525,18 @@ var bluePrint = {
 bluePrint.hexList.forEach(function (hex) { new Hex(hex.q, hex.r, hex.classes) })
 console.log(`results.length = ${results.length}`)
 constructAllHexes()
+
+// Make the enter button hex
+var submitHex = new Hex(2, 2, "enter submit-button")
+submitHex.letter = "enter"
+// { "q": 2, "r": 2, "classes": "black" },
+
+// Make the clear button hex
+var clearHex = new Hex(4, -2, "clear")
+clearHex.letter = "clear"
+
+// { "q": -3, "r": -2, "classes": "black" }
+
 // Now that the board is initialized, draw it for the first time
 // var scoreDisplayString =
 // 	`
