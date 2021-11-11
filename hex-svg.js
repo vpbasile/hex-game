@@ -24,7 +24,7 @@ var hexUID = 0
 var ring = 0
 var canvasSize
 var canvasCenter = { "x": "", "y": "" }
-var viewportScale = 1
+var viewportScale = 0.5
 var attempts = 0
 var firstload = true
 var orientationScreen
@@ -196,8 +196,8 @@ function initCanvas() {
 	// Determine the canvas size
 	var fudgeFactor = 1.2
 	canvasSize = {
-		"x": fudgeFactor*Math.floor(window.innerWidth * viewportScale),
-		"y": fudgeFactor*Math.floor(window.innerHeight * viewportScale)
+		"x": Math.floor(window.innerWidth * viewportScale),
+		"y": Math.floor(window.innerHeight * viewportScale)
 	}
 	if (canvasSize.x > canvasSize.y) { orientationScreen = "landscape" }
 	else { orientationScreen = "portrait" }
