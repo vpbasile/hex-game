@@ -29,25 +29,7 @@ var attempts = 0
 var firstload = true
 var orientationScreen
 var orientationHex = "pointy-top"
-
 var gameBoard
-function placeholderText() { return `It is ${players[currentPlayer].color}'s turn. Touch a letter to begin.` }
-
-// Gameplay global variables
-var players = [
-	{ "id": 0, "color": "purple", "score": 0, "history": [] },
-	{ "id": 1, "color": "green", "score": 0, "history": [] }
-]
-var currentPlayer = 0
-var currentTurn = 1
-var currentColor = players[currentPlayer].color
-var wordHistory = []
-var currentword = ""
-var currentWordScore = 0
-var lastCLickedHex = null
-var letterScores = {
-	"A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1, "J": 8, "K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "QU": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10
-}
 
 // <> Class Definitions
 class Coordinate2d { constructor(x, y) { this.x = x; this.y = y; } }
@@ -203,181 +185,19 @@ function constructAllHexes() {
 
 			thisLetter = results.pop()
 			currentHex.letter = thisLetter;
-			console.log(`Assigning ${thisLetter} to hex ${currentHex.id}`)
+			debug(`Assigning ${thisLetter} to hex ${currentHex.id}`)
 			currentHex.setClasses("clickable")
-			console.log(`Hex ${currentHex.id} has classes ${currentHex.classes}`)
+			debug(`Hex ${currentHex.id} has classes ${currentHex.classes}`)
 		}
-	}
-
+	}	
 }
-
-function addTo(hexA, hexB) { return new Hex(hexA.q + hexB.q, hexA.r + hexB.r, hexA.s + hexB.s) }
-
-// Store all of the q,r pairs in an array
-var directionVectors = [
-	{ "q": +1, "r": 0 }, { "q": +1, "r": -1 }, { "q": 0, "r": -1 }, { "q": -1, "r": 0 }, { "q": -1, "r": +1 }, { "q": 0, "r": +1 }
-]
-
-function refreshView() {
-	gameBoard.clear()
-	// Refresh the viewport
-	// Draw all the hexes with their letters
-	Hexes.forEach(element => { element.draw() })
-	// Draw the current word
-	currentWordDisplay.innerText = `${currentword} (${currentWordScore})`
-	// Draw the history
-	// drawHistory()
-}
-
-function handleClick(hexId) {
-	var clickedHex = Hexes[hexId]
-	var hexLetter = clickedHex.letter
-	console.log(`Clicked hex at q:${clickedHex.q} r:${clickedHex.r}`)
-	switch (hexLetter) {
-		case undefined:
-			console.log(`Clicked empty hex`)
-			break
-		case 'enter':
-			console.log(`Clicked enter`)
-			finishTurn()
-			break
-		case 'clear':
-			console.log(`Clicked clear`)
-			clearTurn()
-			break
-		default:
-			if (clickedHex.classes == "hex clickable") {
-				// The hex has a letter and is clickable, so perform the action, so claim the hex for the current player
-				successfulClick(clickedHex)
-			}
-
-	}
-}
-
-function successfulClick(clickedHex) {
-	// Keep track of the letters so that you can rewind mistakes
-	// !!!!! Still didnt do that
-
-	// Remove the lastclick class from the other letter
-	if (lastCLickedHex != null) { lastCLickedHex.setClasses(`${currentColor}`) }
-	// Now update the new last clicked hex
-	lastCLickedHex = clickedHex
-	clickedHex.setClasses(`${currentColor} lastclick`)
-	// Add the letter to the word
-	currentLetter = clickedHex.letter
-	currentword += currentLetter
-	currentWordScore += letterScores[currentLetter]
-	// Update the word display
-	currentWordDisplay.innerText = currentword
-
-	Hexes.forEach(element => {
-		if (element.classes.includes(currentColor)) {
-			// Do nothing
-		} else {
-			if (clickedHex.isNeighbor(element)) {
-				debug(`neighbor found at ${element.q}, ${element.r}`)
-				element.setClasses(`clickable`)
-			} else { element.setClasses(`locked`) }
-		}
-	})
-
-	// Lock every hex that is not a neighbor of the clicked hex
-	Hexes.forEach(element => {
-		if (!clickedHex.isNeighbor(element)) {
-		}
-	})
-
-	gameBoard.clear()
-	refreshView()
-
-	// // Check if the word is in the dictionary
-	// if (dictionary.includes(current_word)) {
-	// 	// The word is in the dictionary, so make the word display clickable in order to enter
-	// }
-	// else {
-	// 	// The word is not in the dictionary, so do nothing
-	// }
-	// Lock all the neighbors
-}
-
-function appendToHistory(player, word) {
-	// Add the word to the history
-	players[player].history.push(word)
-	// console.log(tempstring)
-	var tempItem = document.createElement("li")
-	tempItem.innerText = `${currentword}(${currentWordScore})`
-	document.getElementById(`player${currentPlayer}history`).appendChild(tempItem)
-	// Update the history display
-	// drawHistory()
-}
-
-function finishTurn() {
-	console.log(`${currentTurn} The ${players[currentPlayer].color} player enterd ${currentword} for ${currentWordScore} points.`)
-	players[currentPlayer].score += currentWordScore
-	var tempstring = `player${currentPlayer}score`
-	document.getElementById(tempstring).innerText = players[currentPlayer].score
-	// historyDisplay.innerHTML += `<li class="${currentColor}">(${currentWordScore})${currentword}</li>`
-	appendToHistory(currentPlayer, currentword) // Add the word to the history
-	wordHistory[currentTurn] = { "word": currentword, "color": currentColor }
-	currentTurn++
-	// Switch the current player to the next player
-	currentPlayer = (currentPlayer + 1) % players.length
-	submitButton.classList.toggle(currentColor)
-	currentWordDisplay.classList.toggle(currentColor)
-	currentColor = players[currentPlayer].color
-	submitButton.classList.toggle(currentColor)
-	currentWordDisplay.classList.toggle(currentColor)
-	// Clear the current word
-	currentWordDisplay.innerText = placeholderText()
-	currentword = ""
-	currentWordScore = 0
-	// var scoreDisplayString =
-	// 	`
-	// <span class='${players[0].color} score'>${players[0].score}</span>
-	// <span class='${players[1].color} score'>${players[1].score}</span>
-	// `
-	// Clear the last clicked hex
-	lastCLickedHex = null
-	Hexes.forEach(element => { element.setClasses(`clickable`) })
-	clearTurn()
-	// Reset the board
-	// scoredisplay.innerHTML = scoreDisplayString
-	refreshView()
-	currentWordDisplay.innerText = placeholderText()
-}
-
-function clearTurn() {
-	// Clear the current word
-	// currentWordDisplay.innerText = placeholderText
-	currentword = ""
-	currentWordScore = 0
-	// Clear the last clicked hex
-	lastCLickedHex = null
-	Hexes.forEach(element => { element.setClasses(`clickable`) })
-
-	// Reset the board
-	refreshView()
-	// currentWordDisplay.innerText = placeholderText
-}
-
-function clearCurrentWord() {
-	currentword = ""
-	// currentWordDisplay.innerText = placeholderText()
-}
-
-// <> Helper Functions
-function debug(string) { if (verbose) { console.log(string) } }
-
-// <> Math Functions
-function degtoRad(degrees) { return degrees * Math.PI / 180 }
 
 function initCanvas() {
 	// Determine the canvas size
-	// canvasSize.x = Math.floor(window.innerWidth * viewportScale)
-	// canvasSize.y = Math.floor(window.innerHeight * viewportScale)
+	var fudgeFactor = 1.2
 	canvasSize = {
-		"x": Math.floor(window.innerWidth * viewportScale),
-		"y": Math.floor(window.innerHeight * viewportScale)
+		"x": fudgeFactor*Math.floor(window.innerWidth * viewportScale),
+		"y": fudgeFactor*Math.floor(window.innerHeight * viewportScale)
 	}
 	if (canvasSize.x > canvasSize.y) { orientationScreen = "landscape" }
 	else { orientationScreen = "portrait" }
@@ -387,168 +207,25 @@ function initCanvas() {
 	canvasSize.y = minDimension
 	canvasCenter.x = Math.floor(canvasSize.x / 2)
 	canvasCenter.y = Math.floor(canvasSize.y / 2)
-	hexRadius = minDimension / 14
+	hexRadius = minDimension / (14 * fudgeFactor)
 	hexSize.x = hexRadius * 2 * Math.cos(degtoRad(30))
 	hexSize.y = 2 * hexRadius
 	// Create the SVG
+	// Actually, we need a little more space for the bowl, so we'll make the canvas a little wider
+	canvasSize.x += 60
+	canvasCenter.x = Math.floor(canvasSize.x / 2)
 	gameBoard = SVG().size(canvasSize.x, canvasSize.y).addTo(replaceGameBoard)
 	// canvasCenter = new Coordinate2d(canvasCenter.x, canvasCenter.y)
 	debug(`Canvas size is ${canvasSize.x} by ${canvasSize.y}`)
+	bowlRadius = Math.min(canvasSize.x, canvasSize.y) / 2
 }
 
+// <> Helper and Math Functions
+function debug(string) { if (verbose) { console.log(string) } }
+function degtoRad(degrees) { return degrees * Math.PI / 180 }
+function addTo(hexA, hexB) { return new Hex(hexA.q + hexB.q, hexA.r + hexB.r, hexA.s + hexB.s) }
 
-// <> Main
-
-// <> Randomize the board
-// Initialize stuff
-var myDice1 = `rstqwx`
-var myDice2 = `eaozjy`
-var list = [
-	'aaafrs', 'aaeeee', 'aafirs', 'adennn', 'aeeeem', myDice1,
-	'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', myDice2,
-	'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', myDice2,
-	'ceiilt', 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', myDice1,
-	'dhlnor', 'dhlnor', 'eiiitt', 'emottt', 'ensssu', myDice2,
-	'fiprsy', 'gorrvw', 'iprrry', 'nootuw', 'ooottu', myDice1
-	, 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', myDice2, myDice1
+// Store all of the q,r directiom vector pairs in an array
+var directionVectors = [
+	{ "q": +1, "r": 0 }, { "q": +1, "r": -1 }, { "q": 0, "r": -1 }, { "q": -1, "r": 0 }, { "q": -1, "r": +1 }, { "q": 0, "r": +1 }
 ]
-
-var board_generator = []; //2-dimensional array for storing original dice information
-var current_track = []; // keep track of visited dice in selected order
-var clickable = []; // those clickable dice
-var submitted = new Set(); // store submitted words
-
-/* Functions for generating the board */
-function board(results) {//generate a random set of 36 dice and store them in board_generator
-	var board = []; // For storing the dice
-	var dice_arr = [];
-	var upside;
-	shuffle(board_generator);
-	// console.log(`Newly-shuffled board board_generator`)
-	// console.table(board_generator);
-	for (let i = 0; i < board_generator.length; i++) {
-		// console.log(`Looping through the board_generator`)
-		// console.table(board_generator[i]);
-		dice_arr = board_generator[i];
-		upside = random_face(dice_arr);
-		if (upside === 'Q') upside = 'QU';
-		results.push(upside)
-	}
-	console.log("Board")
-	console.table(board)
-	console.log("results")
-	console.log(results)
-	//render board on HTML
-
-}
-
-function board_generate() {
-	var dice;
-	console.log(`List length: ${list.length}`)
-	for (let i = 0; i < list.length; i++) {
-		dice = list[i].toUpperCase().split('');
-		board_generator.push(dice);
-	}
-	// console.table(board_generator);
-}
-
-function shuffle(arr) {//function to shuffle the dice
-	var j, temp;
-	for (let i = arr.length; i > 0; i--) {
-		j = Math.floor(Math.random() * i);
-		temp = arr[i - 1];
-		arr[i - 1] = arr[j];
-		arr[j] = temp;
-	}
-}
-
-function random_face(arr) {//random a upside face from a dice
-	var index = Math.floor(Math.random() * 6);
-	var upside_face = arr[index];
-	return upside_face;
-}
-var results = []
-initCanvas()
-
-board_generate();
-board(results);
-// button_event();
-
-// The blueprint stores the shape of the board
-var bluePrint = {
-	"name": "Bee Spelling Board",
-	"description": "A bee spelling board",
-	"author": "Vincent",
-	"version": "1.0",
-	"hexList": [
-		{ "q": 0, "r": 0, "classes": "" },
-		{ "q": -1, "r": 0, "classes": "" },
-		{ "q": -1, "r": 1, "classes": "" },
-		{ "q": 0, "r": -1, "classes": "" },
-		{ "q": 0, "r": 1, "classes": "" },
-		{ "q": 1, "r": -1, "classes": "" },
-		{ "q": 1, "r": 0, "classes": "" },
-		{ "q": -2, "r": 0, "classes": "" },
-		{ "q": -2, "r": 1, "classes": "" },
-		{ "q": -2, "r": 2, "classes": "" },
-		{ "q": -1, "r": -1, "classes": "" },
-		{ "q": -1, "r": 2, "classes": "" },
-		{ "q": 0, "r": -2, "classes": "" },
-		{ "q": 0, "r": 2, "classes": "" },
-		{ "q": 1, "r": -2, "classes": "" },
-		{ "q": 1, "r": 1, "classes": "" },
-		{ "q": 2, "r": -2, "classes": "" },
-		{ "q": 2, "r": -1, "classes": "" },
-		{ "q": 2, "r": 0, "classes": "" },
-		{ "q": -3, "r": 0, "classes": "" },
-		{ "q": -3, "r": 1, "classes": "" },
-		{ "q": -3, "r": 2, "classes": "" },
-		{ "q": -3, "r": 3, "classes": "" },
-		{ "q": -2, "r": -1, "classes": "" },
-		{ "q": -2, "r": 3, "classes": "" },
-		{ "q": -1, "r": -2, "classes": "" },
-		{ "q": -1, "r": 3, "classes": "" },
-		{ "q": 0, "r": -3, "classes": "" },
-		{ "q": 0, "r": 3, "classes": "" },
-		{ "q": 1, "r": -3, "classes": "" },
-		{ "q": 1, "r": 2, "classes": "" },
-		{ "q": 2, "r": -3, "classes": "" },
-		{ "q": 2, "r": 1, "classes": "" },
-		{ "q": 3, "r": -3, "classes": "" },
-		{ "q": 3, "r": -2, "classes": "" },
-		{ "q": 3, "r": -1, "classes": "" },
-		{ "q": 3, "r": 0, "classes": "" }
-	]
-}
-
-// Run the constructor for each hex
-bluePrint.hexList.forEach(function (hex) { new Hex(hex.q, hex.r, hex.classes) })
-console.log(`results.length = ${results.length}`)
-constructAllHexes()
-
-// Make the enter button hex
-var submitHex = new Hex(2, 2, "enter submit-button")
-submitHex.letter = "enter"
-// { "q": 2, "r": 2, "classes": "black" },
-
-// Make the clear button hex
-var clearHex = new Hex(4, -2, "clear")
-clearHex.letter = "clear"
-
-// { "q": -3, "r": -2, "classes": "black" }
-
-// Now that the board is initialized, draw it for the first time
-// var scoreDisplayString =
-// 	`
-// 	<span class='${players[0].color} score'>${players[0].score}</span>
-// 	<span class='${players[1].color} score'>${players[1].score}</span>
-// 	`
-// scoredisplay.innerHTML = scoreDisplayString
-refreshView()
-firstload = false
-console.log(`Created ${Hexes.length} hexes`)
-submitButton.classList.toggle(currentColor)
-currentWordDisplay.classList.toggle(currentColor)
-currentWordDisplay.innerText = placeholderText()
-document.getElementById("player0history").innerText = "-"
-document.getElementById('player1history').innerText = "-"

@@ -1,0 +1,122 @@
+:root {
+	--blur-min: 2px;
+	--blur-max: 8px;
+
+	/* Theme Colors */
+	--tomato-light: hsl(0, 100%, 50%);
+	--tomato-med: hsl(0, 89%, 22%);
+	--tomato-dark: hsl(0, 95%, 14%);
+	--pasta: hsl(38, 100%, 50%);
+	/* Player 0 COlors */
+	--purple-light: hsl(300, 100%, 50%);
+	--purple-med: hsl(300, 90%, 22%);
+	--purple-dark: hsl(300, 100%, 8%);
+
+	/* Player 1 Colors */
+	--blue-light: hsl(240, 100%, 50%);
+	--blue-med: hsl(240, 90%, 22%);
+	--blue-dark: hsl(240, 100%, 8%);
+}
+
+body {
+	background: cornflowerblue;
+	color: whitesmoke;
+}
+
+
+
+/* #gameBoard {} */
+
+.hex.clickable {
+	fill: var(--tomato-med);
+	filter: blur(var(--blur-min));
+}
+.player0,.purple {
+	fill: var(--purple-dark);
+	stroke: var(--purple-light);
+	background-color: var(--purple-dark);
+	color: var(--purple-light);
+	border-color: var(--purple-med);
+	filter: blur(--blur-min);
+}
+
+
+.player1,.blue {
+	fill: var(--blue-dark);
+	stroke: var(--blue-light);
+	background-color: var(--blue-dark);
+	color: var(--blue-light);
+	border-color: var(--blue-med);
+	filter: blur(--blur-min);
+
+}	
+
+.tomato {
+	fill: var(--tomato-dark);
+	stroke: var(--tomato-light);
+	background-color: var(--tomato-dark);
+	color: var(--tomato-light);
+	border-color: var(--tomato-med);
+}
+
+.pasta {
+	fill: var(--pasta);
+	stroke: var(--pasta);
+	background-color: var(--pasta);
+	color: var(--pasta);
+	border-color: var(--pasta);
+}
+
+
+.black {
+	fill: black;
+	stroke: white;
+	background-color: black;
+	color: white;
+	filter: blur(--blur-min);
+}
+
+
+.lastclick {
+	/* stroke: var(--tomato-light); */
+	stroke-width: 5;
+}
+
+.locked {
+	fill: var(--tomato-dark);
+	filter: opacity(0.3) blur(var(--blur-max));
+}
+
+
+.hex.hex.clickable:hover {
+	/* fill: black; */
+	filter: brightness(90%) saturate(50%) opacity(1.0);
+}
+
+button {
+	background-color: black;
+	color: var(--pasta);
+}
+
+#submitButton,.submit-button {
+	background-color: var(--tomato-med);
+	fill: var(--tomato-med);
+}
+/* 
+#clearButton {
+	color: white;
+} */
+
+#bowl {
+	stroke: white;
+	fill: var(--tomato-med);
+}
+
+tspan {
+	fill: var(--pasta);
+  }
+
+  #currentWordDisplay {
+	color: var(--primary);
+	background-color: black;
+  }
