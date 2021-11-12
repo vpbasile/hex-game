@@ -39,6 +39,9 @@ body {
 	border-color: var(--purple-med);
 	filter: blur(--blur-min);
 }
+.player0 > tspan {
+	fill: var(--purple-light);
+}
 
 
 .player1,.blue {
@@ -50,6 +53,9 @@ body {
 	filter: blur(--blur-min);
 
 }	
+.player1 > tspan {
+	fill: var(--blue-light);
+}
 
 .tomato {
 	fill: var(--tomato-dark);
@@ -65,6 +71,16 @@ body {
 	background-color: var(--pasta);
 	color: var(--pasta);
 	border-color: var(--pasta);
+}
+
+#crackers {
+	fill:var(--pasta);
+	stroke-width:0;
+}
+
+#crackersText tspan {
+	fill:var(--tomato-med);
+	stroke-width:0;
 }
 
 

@@ -18,7 +18,7 @@ var letterScores = {
 var orientationBowl = 'flat-top'
 var bowlRadius
 var spoon = SVG().addTo('#gameBoard')
-
+var spoonWord
 
 function drawView() {
 	// Refresh the viewport
@@ -35,7 +35,7 @@ function drawView() {
 
 function drawSoupBowl() {
 	var polygonString = ""
-	var tempCoordinate = {"x": 0, "y": 0}
+	var tempCoordinate = { "x": 0, "y": 0 }
 	// Find the X and Y of each corner - shift the bowl by 60 degrees
 	cornerAngles.forEach(element => {
 		var theta = element * Math.PI / 180 + Math.PI / 6
@@ -45,16 +45,24 @@ function drawSoupBowl() {
 		polygonString += `${tempCoordinate.x},${tempCoordinate.y}`
 	});
 	gameBoard.polygon(polygonString)
-	.attr('id', 'bowl')
+		.attr('id', 'bowl')
 }
 
 function drawSpoon() {
-	var spoonPath="m 226.47421,45.910526 c -5.37067,4.00346 -12.81036,7.02322 -20.78963,8.43847 -4.36103,0.77351 -14.70533,0.6148 -19.20723,-0.29467 -13.54124,-2.73561 -24.51445,-9.56608 -29.73114,-18.50665 -3.00716,-5.1538 -6.88048,-8.15267 -13.7684,-10.66003 -4.08853,-1.48831 -15.11075,-3.36464 -24.76726,-4.21618 -31.394691,-2.76843 -59.062171,3.49899 -84.907071,19.23371 -4.9198,2.99525 -8.19015,3.81279 -11.65472,2.91354 -2.62079,-0.68024 -4.97236,-3.08282 -6.08167,-6.2136 -0.94647,-2.67122 -1.11904,-7.55138 -0.37434,-10.58625 1.21771,-4.96258 4.47934,-9.4371 8.42133,-11.55297 2.15776,-1.15818 8.68752,-2.85717 19.00295,-4.9444098 34.83327,-7.048202 65.478881,-6.463439 95.007981,1.8129098 9.18012,2.57299 10.22532,2.77354 14.63147,2.80744 4.77078,0.0367 7.12111,-0.60396 10.023,-2.73211 12.36132,-9.0653828 34.54623,-11.22387584 52.87184,-5.1441898 8.4521,2.80404 16.32657,8.4068898 19.24461,13.6929098 4.8389,8.76566 1.80634,18.70051 -7.92171,25.95208 z m 1.77517,-10.90458 c -0.0557,-0.0556 -2.17265,0.4653 -4.70446,1.15765 -8.71468,2.3831 -17.19077,3.43591 -26.5419,3.29672 -10.26986,-0.15286 -18.85229,-1.63298 -28.601,-4.9325 -3.95062,-1.33711 -5.79018,-1.80335 -5.57234,-1.41231 2.43743,4.37534 10.21269,9.68378 17.91774,12.23306 13.99854,4.63152 30.0153,2.92082 40.99359,-4.37841 1.78941,-1.18974 6.74323,-5.72936 6.50837,-5.96421 z"
+	var spoonPath = "m 226.47421,45.910526 c -5.37067,4.00346 -12.81036,7.02322 -20.78963,8.43847 -4.36103,0.77351 -14.70533,0.6148 -19.20723,-0.29467 -13.54124,-2.73561 -24.51445,-9.56608 -29.73114,-18.50665 -3.00716,-5.1538 -6.88048,-8.15267 -13.7684,-10.66003 -4.08853,-1.48831 -15.11075,-3.36464 -24.76726,-4.21618 -31.394691,-2.76843 -59.062171,3.49899 -84.907071,19.23371 -4.9198,2.99525 -8.19015,3.81279 -11.65472,2.91354 -2.62079,-0.68024 -4.97236,-3.08282 -6.08167,-6.2136 -0.94647,-2.67122 -1.11904,-7.55138 -0.37434,-10.58625 1.21771,-4.96258 4.47934,-9.4371 8.42133,-11.55297 2.15776,-1.15818 8.68752,-2.85717 19.00295,-4.9444098 34.83327,-7.048202 65.478881,-6.463439 95.007981,1.8129098 9.18012,2.57299 10.22532,2.77354 14.63147,2.80744 4.77078,0.0367 7.12111,-0.60396 10.023,-2.73211 12.36132,-9.0653828 34.54623,-11.22387584 52.87184,-5.1441898 8.4521,2.80404 16.32657,8.4068898 19.24461,13.6929098 4.8389,8.76566 1.80634,18.70051 -7.92171,25.95208 z m 1.77517,-10.90458 c -0.0557,-0.0556 -2.17265,0.4653 -4.70446,1.15765 -8.71468,2.3831 -17.19077,3.43591 -26.5419,3.29672 -10.26986,-0.15286 -18.85229,-1.63298 -28.601,-4.9325 -3.95062,-1.33711 -5.79018,-1.80335 -5.57234,-1.41231 2.43743,4.37534 10.21269,9.68378 17.91774,12.23306 13.99854,4.63152 30.0153,2.92082 40.99359,-4.37841 1.78941,-1.18974 6.74323,-5.72936 6.50837,-5.96421 z"
 	// var enterText="enter"
 	// var clearText="clear"
-	gameBoard.path(spoonPath).move(400,50).attr('id', 'spoon').transform({ scale:3}).fill("black").on('click', function() { finishTurn() })
-	// gameBoard.text(enterText).move(400,100).attr('id', 'enter').transform({ scale:3}).fill("black").on('click', function() { finishTurn() })
-	// gameBoard.text(100,100, "Spoon").attr('id','spoonText')
+	gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).fill("black").on('click', function () { finishTurn() })
+
+	spoonWord = gameBoard.text(currentword).attr('class',`player${currentPlayer}`)
+	spoonWord.move(650, 30)
+		.on('click', function () { finishTurn() })
+		.attr('id', 'submitButton')
+		// .transform({ scale: 3 })
+		// .fill("white")
+
+	gameBoard.path(crackerPath).move(825,750).attr('id', 'crackers').transform({ scale: 20 }).stroke("none").attr('class',`pasta`).on('click', function() { clearTurn() })
+	gameBoard.text("CLEAR").move(805,730).attr('id', 'crackersText').transform( { rotate: -45}).on('click', function() { clearTurn() })
 }
 function handleClick(hexId) {
 	var clickedHex = Hexes[hexId]
@@ -96,6 +104,7 @@ function successfulClick(clickedHex) {
 	currentWordScore += letterScores[currentLetter]
 	// Update the word display
 	currentWordDisplay.innerText = currentword
+	spoonWord.text(currentword)
 
 	Hexes.forEach(element => {
 		if (element.classes.includes(currentColor)) {
@@ -149,12 +158,12 @@ function finishTurn() {
 	currentTurn++
 	// Switch the current player to the next player
 	currentPlayer = (currentPlayer + 1) % players.length
-	submitButton.classList.toggle(currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
 	currentColor = players[currentPlayer].color
-	submitButton.classList.toggle(currentColor)
+	spoonWord.attr('class',currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
 	// Clear the current word
+
 	currentWordDisplay.innerText = placeholderText()
 	currentword = ""
 	currentWordScore = 0
