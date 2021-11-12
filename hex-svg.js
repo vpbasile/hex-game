@@ -196,8 +196,8 @@ function initCanvas() {
 	// Determine the canvas size
 	var fudgeFactor = 1.2
 	canvasSize = {
-		"x": Math.floor(window.innerWidth * viewportScale),
-		"y": Math.floor(window.innerHeight * viewportScale)
+		"x": Math.floor(window.innerWidth),
+		"y": Math.floor(window.innerHeight)
 	}
 	if (canvasSize.x > canvasSize.y) { orientationScreen = "landscape" }
 	else { orientationScreen = "portrait" }
