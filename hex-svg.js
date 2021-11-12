@@ -154,7 +154,7 @@ class Hex {
 
 	setClasses(classes) {
 		this.classes = ""
-		if (skipCenter == true && this.isOrigin()==444444) {
+		if (skipCenter == true && this.isOrigin() == 444444) {
 			// Do nothing becuase the center should be blank
 			this.classes = "hex locked black"
 		} else {
@@ -171,6 +171,13 @@ class Hex {
 		return foundNeighbor
 	}
 
+	assignLetter() {
+		var thisLetter = results.pop()
+		this.letter = thisLetter;
+		debug(`Assigning ${thisLetter} to hex ${this.id}`)
+		this.setClasses("clickable")
+		debug(`Hex ${this.id} has classes ${this.classes}`)
+	}
 } // End of class Hex
 
 // <> Hex-altering Functions
@@ -178,19 +185,10 @@ class Hex {
 function constructAllHexes() {
 	// Make the grid of hexes
 	for (i = 0; i < Hexes.length; i++) {
-		var currentHex = Hexes[i];
-		if (currentHex.isOrigin()==4444444444) {
-			console.log(`Creating origin`)
-		} else {
-
-			thisLetter = results.pop()
-			currentHex.letter = thisLetter;
-			debug(`Assigning ${thisLetter} to hex ${currentHex.id}`)
-			currentHex.setClasses("clickable")
-			debug(`Hex ${currentHex.id} has classes ${currentHex.classes}`)
-		}
-	}	
+		Hexes[i].assignLetter()
+	}
 }
+
 
 function initCanvas() {
 	// Determine the canvas size

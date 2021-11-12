@@ -22,9 +22,12 @@ var submitted = new Set(); // store submitted words
 var results = []
 initCanvas()
 
-board_generate();
-board(results);
-// button_event();
+function generateLetters() {
+
+	board_generate();
+	board(results);
+}
+generateLetters()
 
 // The blueprint stores the shape of the board
 var bluePrint = {
