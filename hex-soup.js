@@ -61,7 +61,7 @@ function drawSpoon() {
 		// .transform({ scale: 3 })
 		// .fill("white")
 
-	gameBoard.path(crackerPath).move(825,750).attr('id', 'crackers').transform({ scale: 20 }).stroke("none").attr('class',`pasta`).on('click', function() { clearTurn() })
+	gameBoard.path(crackerPath).move(825,750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class',`pasta`).on('click', function() { clearTurn() })
 	gameBoard.text("CLEAR").move(805,730).attr('id', 'crackersText').transform( { rotate: -45}).on('click', function() { clearTurn() })
 }
 function handleClick(hexId) {
