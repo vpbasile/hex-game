@@ -17,8 +17,14 @@ var letterScores = {
 }
 var orientationBowl = 'flat-top'
 var bowlRadius
-var spoon = SVG().addTo('#gameBoard')
+var spoon
 var spoonWord
+
+// Stuff for checking the entered words in a dictionary
+const apiKey = "df21cec5-0310-49d9-be45-0e5d29bb553c"
+const apiName = "thesaurus"
+var url
+
 
 function drawView() {
 	// Refresh the viewport
@@ -49,25 +55,28 @@ function drawSoupBowl() {
 }
 
 function drawSpoon() {
-	
+
 	// var enterText="enter"
 	// var clearText="clear"
-	gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).fill("black").on('click', function () { finishTurn() })
+	spoon = gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).on('click', function () { submitButtonClicked() })
+	
+	spoon.attr(
+		'class', `player${currentPlayer}`)
 
-	spoonWord = gameBoard.text(currentword).attr('class',`player${currentPlayer}`)
+	spoonWord = gameBoard.text(currentword).attr('class', `player${currentPlayer}`)
 	spoonWord.move(650, 30)
-		.on('click', function () { finishTurn() })
+		.on('click', function () { submitButtonClicked() })
 		.attr('id', 'submitButton')
-		// .transform({ scale: 3 })
-		// .fill("white")
+	// .transform({ scale: 3 })
+	// .fill("white")
 
-	gameBoard.path(crackerPath).move(825,750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class',`pasta`).on('click', function() { clearTurn() })
-	gameBoard.text("CLEAR").move(805,730).attr('id', 'crackersText').transform( { rotate: -45}).on('click', function() { clearTurn() })
+	gameBoard.path(crackerPath).move(825, 750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class', `pasta`).on('click', function () { clearTurn() })
+	gameBoard.text("CLEAR").move(805, 730).attr('id', 'crackersText').transform({ rotate: -45 }).on('click', function () { clearTurn() })
 }
 function handleClick(hexId) {
 	var clickedHex = Hexes[hexId]
 	var hexLetter = clickedHex.letter
-	console.log(`Clicked hex at q:${clickedHex.q} r:${clickedHex.r}`)
+	// console.log(`Clicked hex at q:${clickedHex.q} r:${clickedHex.r}`)
 	switch (hexLetter) {
 		case undefined:
 			console.log(`Clicked empty hex`)
@@ -147,6 +156,31 @@ function appendToHistory(player, word) {
 	// drawHistory()
 }
 
+async function submitButtonClicked() {
+	spoon.attr('stroke', 'cornflowerblue') 
+	if(currentword.length>0){ await dictionaryCheck(currentword)}
+ }
+async function dictionaryCheck(word) {
+	url = `https://www.dictionaryapi.com/api/v3/references/${apiName}/json/${word}?key=${apiKey}`
+	let myObject = await fetch(url);
+	let myText = await myObject.json();
+	if ((myText[0].meta != undefined)) {
+		spoon.attr('stroke',`green`)
+		console.log(`${word} is in the dictionary`)
+		finishTurn()
+	} else {
+		spoon.attr('stroke',`red`)
+		console.log(`${word} is not in the dictionary`)
+		nope()
+	}
+}
+
+function beginTurn() {
+	spoon.attr(
+		'class', `player${currentPlayer}`)
+}
+
+
 function finishTurn() {
 	generateLetters()
 	// Remove the used letters
@@ -168,7 +202,7 @@ function finishTurn() {
 	currentPlayer = (currentPlayer + 1) % players.length
 	currentWordDisplay.classList.toggle(currentColor)
 	currentColor = players[currentPlayer].color
-	spoonWord.attr('class',currentColor)
+	spoonWord.attr('class', currentColor)
 	currentWordDisplay.classList.toggle(currentColor)
 	// Clear the current word
 
@@ -181,7 +215,13 @@ function finishTurn() {
 	// Reset the board
 	// scoredisplay.innerHTML = scoreDisplayString
 	drawView()
+	beginTurn()
 	currentWordDisplay.innerText = placeholderText()
+}
+
+function nope() {
+	console.log(`Nope.`)
+	clearTurn()
 }
 
 function clearTurn() {
@@ -227,7 +267,7 @@ function board(results) {//generate a random set of 36 dice and store them in bo
 
 function board_generate() {
 	var dice;
-	console.log(`List length: ${list.length}`)
+	// console.log(`List length: ${list.length}`)
 	for (let i = 0; i < list.length; i++) {
 		dice = list[i].toUpperCase().split('');
 		board_generator.push(dice);

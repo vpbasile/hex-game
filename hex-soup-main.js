@@ -89,3 +89,4 @@ currentWordDisplay.classList.toggle(currentColor)
 currentWordDisplay.innerText = placeholderText()
 document.getElementById("player0history").innerText = "-"
 document.getElementById('player1history').innerText = "-"
+beginTurn()

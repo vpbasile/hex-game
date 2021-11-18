@@ -23,7 +23,54 @@ body {
 	color: whitesmoke;
 }
 
+.lastclick {
+	/* stroke: var(--tomato-light); */
+	stroke-width: 5;
+}
 
+.locked {
+	fill: var(--tomato-dark);
+	filter: opacity(0.3) blur(var(--blur-max));
+}
+
+
+.hex.hex.clickable:hover {
+	/* fill: black; */
+	filter: brightness(90%) saturate(50%) opacity(1.0);
+}
+
+button {
+	background-color: black;
+	color: var(--pasta);
+}
+
+#submitButton,.submit-button {
+	background-color: var(--tomato-med);
+	fill: var(--tomato-med);
+}
+/* 
+#clearButton {
+	color: white;
+} */
+
+#bowl {
+	stroke: white;
+	fill: var(--tomato-med);
+}
+
+/* #spoon {
+	stroke: black;
+} */
+   
+
+tspan {
+	fill: var(--pasta);
+  }
+
+  #currentWordDisplay {
+	color: var(--primary);
+	background-color: black;
+  }
 
 /* #gameBoard {} */
 
@@ -93,46 +140,4 @@ body {
 }
 
 
-.lastclick {
-	/* stroke: var(--tomato-light); */
-	stroke-width: 5;
-}
 
-.locked {
-	fill: var(--tomato-dark);
-	filter: opacity(0.3) blur(var(--blur-max));
-}
-
-
-.hex.hex.clickable:hover {
-	/* fill: black; */
-	filter: brightness(90%) saturate(50%) opacity(1.0);
-}
-
-button {
-	background-color: black;
-	color: var(--pasta);
-}
-
-#submitButton,.submit-button {
-	background-color: var(--tomato-med);
-	fill: var(--tomato-med);
-}
-/* 
-#clearButton {
-	color: white;
-} */
-
-#bowl {
-	stroke: white;
-	fill: var(--tomato-med);
-}
-
-tspan {
-	fill: var(--pasta);
-  }
-
-  #currentWordDisplay {
-	color: var(--primary);
-	background-color: black;
-  }
