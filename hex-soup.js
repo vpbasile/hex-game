@@ -72,9 +72,13 @@ function drawSpoon() {
 	// .transform({ scale: 3 })
 	// .fill("white")
 
-	gameBoard.circle(200).cx(825).cy(750).attr('id', 'sandwichCircle')
-	gameBoard.path(sandwichPath).fill('red').move(825, 750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class', `pasta`).on('click', function () { clearTurn() })
-	gameBoard.text("CLEAR").move(750, 670).attr('id', 'crackersText').attr('class', 'pasta').on('click', function () { clearTurn() })
+	var buttonCenter = []
+	buttonCenter.x = canvasCenter.x+ (bowlRadius)*0.8
+	buttonCenter.y = canvasCenter.y + (bowlRadius)*0.75
+
+	gameBoard.circle(200).cx(buttonCenter.x).cy(buttonCenter.y).attr('id', 'sandwichCircle')
+	gameBoard.path(sandwichPath).fill('red').move(buttonCenter.x, buttonCenter.y-45).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class', `pasta`).on('click', function () { clearTurn() })
+	gameBoard.text("CLEAR").move(buttonCenter.x-65, buttonCenter.y+25).attr('id', 'crackersText').attr('class', 'pasta').on('click', function () { clearTurn() })
 }
 function handleClick(hexId) {
 	var clickedHex = Hexes[hexId]
