@@ -59,7 +59,7 @@ function drawSpoon() {
 
 	// var enterText="enter"
 	// var clearText="clear"
-	spoonBack = gameBoard.path(spoonBacker).move(400, 50).attr('id', 'spoonBack').transform({ scale: 3 }).fill('white')
+	spoonBack = gameBoard.path(spoonBacker).move(400, 50).attr('id', 'spoonBack').transform({ scale: 3 })
 	spoon = gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).on('click', function () { submitButtonClicked() })
 
 	spoon.attr(
@@ -160,8 +160,10 @@ function appendToHistory(player, word) {
 }
 
 async function submitButtonClicked() {
-	spoon.attr('stroke', 'cornflowerblue')
-	if (currentword.length > 0) { await dictionaryCheck(currentword) }
+	if (currentword.length > 0) { 
+		spoon.attr('stroke', 'cornflowerblue').attr('class', `black`)
+		await dictionaryCheck(currentword) 
+	}
 }
 async function dictionaryCheck(word) {
 	url = `https://www.dictionaryapi.com/api/v3/references/${apiName}/json/${word}?key=${apiKey}`
