@@ -215,7 +215,7 @@ function initCanvas() {
 	gameBoard = SVG().size(canvasSize.x, canvasSize.y).addTo(replaceGameBoard)
 	// canvasCenter = new Coordinate2d(canvasCenter.x, canvasCenter.y)
 	debug(`Canvas size is ${canvasSize.x} by ${canvasSize.y}`)
-	bowlRadius = Math.min(canvasSize.x, canvasSize.y) / 2
+	bowlRadius = (Math.min(canvasSize.x, canvasSize.y) / 2)*0.95
 }
 
 // <> Helper and Math Functions

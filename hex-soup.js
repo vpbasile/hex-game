@@ -43,6 +43,7 @@ function drawSoupBowl() {
 	var polygonString = ""
 	var tempCoordinate = { "x": 0, "y": 0 }
 	// Find the X and Y of each corner - shift the bowl by 60 degrees
+	console.log(bowlRadius)
 	cornerAngles.forEach(element => {
 		var theta = element * Math.PI / 180 + Math.PI / 6
 		tempCoordinate.x = Math.floor(canvasCenter.x + bowlRadius * Math.cos(theta))
