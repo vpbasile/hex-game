@@ -58,8 +58,9 @@ function drawSpoon() {
 
 	// var enterText="enter"
 	// var clearText="clear"
+	spoonBack = gameBoard.path(spoonBacker).move(400, 50).attr('id', 'spoonBack').transform({ scale: 3 }).fill('white')
 	spoon = gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).on('click', function () { submitButtonClicked() })
-	
+
 	spoon.attr(
 		'class', `player${currentPlayer}`)
 
@@ -70,8 +71,9 @@ function drawSpoon() {
 	// .transform({ scale: 3 })
 	// .fill("white")
 
-	gameBoard.path(crackerPath).move(825, 750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class', `pasta`).on('click', function () { clearTurn() })
-	gameBoard.text("CLEAR").move(805, 730).attr('id', 'crackersText').transform({ rotate: -45 }).on('click', function () { clearTurn() })
+	gameBoard.circle(200).cx(825).cy(750).attr('id', 'sandwichCircle')
+	gameBoard.path(sandwichPath).fill('red').move(825, 750).attr('id', 'crackers').transform({ scale: 10 }).stroke("none").attr('class', `pasta`).on('click', function () { clearTurn() })
+	gameBoard.text("CLEAR").move(750, 670).attr('id', 'crackersText').attr('class', 'pasta').on('click', function () { clearTurn() })
 }
 function handleClick(hexId) {
 	var clickedHex = Hexes[hexId]
@@ -157,27 +159,27 @@ function appendToHistory(player, word) {
 }
 
 async function submitButtonClicked() {
-	spoon.attr('stroke', 'cornflowerblue') 
-	if(currentword.length>0){ await dictionaryCheck(currentword)}
- }
+	spoon.attr('stroke', 'cornflowerblue')
+	if (currentword.length > 0) { await dictionaryCheck(currentword) }
+}
 async function dictionaryCheck(word) {
 	url = `https://www.dictionaryapi.com/api/v3/references/${apiName}/json/${word}?key=${apiKey}`
 	let myObject = await fetch(url);
 	let myText = await myObject.json();
 	if ((myText[0].meta != undefined)) {
-		spoon.attr('stroke',`green`)
+		spoon.attr('stroke', `green`)
 		console.log(`${word} is in the dictionary`)
 		finishTurn()
 	} else {
-		spoon.attr('stroke',`red`)
+		spoon.attr('stroke', `red`)
 		console.log(`${word} is not in the dictionary`)
 		nope()
 	}
 }
 
 function beginTurn() {
-	spoon.attr(
-		'class', `player${currentPlayer}`)
+	spoon.attr('class', `player${currentPlayer}`)
+	spoonBack.attr('class', `player${currentPlayer}`)
 }
 
 
