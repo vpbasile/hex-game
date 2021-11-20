@@ -8,14 +8,18 @@
 	--tomato-dark: hsl(0, 95%, 14%);
 	--pasta: hsl(38, 100%, 50%);
 	/* Player 0 COlors */
-	--purple-light: hsl(300, 100%, 50%);
-	--purple-med: hsl(300, 90%, 22%);
-	--purple-dark: hsl(300, 100%, 8%);
+	/*Purple  */
+	/* --player-0-light: hsl(236, 67%, 76%);
+	--player-0-dark: hsl(248, 28%, 26%); */
+	/* Orange */
+	--player-0-light: #C79F38;
+	--player-0-dark: #433212;
 
 	/* Player 1 Colors */
-	--blue-light: hsl(240, 100%, 50%);
-	--blue-med: hsl(240, 90%, 22%);
-	--blue-dark: hsl(240, 100%, 8%);
+	--player-1-light: hsl(200, 67%, 59%);
+	--player-1-dark: hsl(200, 100%, 16%);
+	
+
 }
 
 body {
@@ -79,29 +83,35 @@ tspan {
 	filter: blur(var(--blur-min));
 }
 .player0,.purple {
-	fill: var(--purple-dark);
-	stroke: var(--purple-light);
-	background-color: var(--purple-dark);
-	color: var(--purple-light);
-	border-color: var(--purple-med);
+	fill: var(--player-0-dark);
+	stroke: var(--player-0-light);
+	background-color: var(--player-0-dark);
+	color: var(--player-0-light);
+	border-color: var(--player-0-med);
 	filter: blur(--blur-min);
 }
 .player0 > tspan {
-	fill: var(--purple-light);
+	fill: var(--player-0-light);
+}
+#spoonBack.player0 {
+	fill: var(--player-0-light);
 }
 
 
 .player1,.blue {
-	fill: var(--blue-dark);
-	stroke: var(--blue-light);
-	background-color: var(--blue-dark);
-	color: var(--blue-light);
+	fill: var(--player-1-dark);
+	stroke: var(--player-1-light);
+	background-color: var(--player-1-dark);
+	color: var(--player-1-light);
 	border-color: var(--blue-med);
 	filter: blur(--blur-min);
 
 }	
 .player1 > tspan {
-	fill: var(--blue-light);
+	fill: var(--player-1-light);
+}
+#spoonBack.player1 {
+	fill: var(--player-1-light)
 }
 
 .tomato {
@@ -139,5 +149,16 @@ tspan {
 	filter: blur(--blur-min);
 }
 
+.bordered {
+	border-width: 5px;
+}
 
+#credits {
+	background-color: var(--tomato-dark);;
+	color: var(--pasta);
+}
 
+#credits a {
+	color: var(--tomato-light);
+
+}

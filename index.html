@@ -5,17 +5,14 @@
 	<!-- Pull in Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="./color-tomato.css">
-	<!-- Latest compiled and minified CSS -->
 	<style>
 		body {
 			background-image: url("./engin-akyurt-4zvfjDFD5fk-unsplash.png");
 			background-repeat: no-repeat;
-			background-size: cover;
+			background-size: ;
 			font-family: 'monospace';
 			font-weight: 700;
 			font-size: 40px;
@@ -56,44 +53,20 @@
 			stroke-width: 60px;
 			stroke-linejoin: round;
 		}
-		
-		/*		
 
-		li {
-			padding: 10px;
-			list-style-type: none;
+		#credits li {
+			font-size: 1.5rem;
 		}
-		
-		#scoreBoard {
+
 		}
-		.score,.roundPad,li {
-			padding: 20px;
-			border-radius: 20px;
-			margin: 30px;
-		}
-		 */
 	</style>
 </head>
 
 <body>
-	<!-- <div class="flex-grid">
-	</div> -->
-
-
 
 	<div class="conatiner row">
-		<!-- <img id='spoon' src='spoon.svg' alt='spoon' />	 -->
 		<div id='gameBoard' class='col-md row'></div>
-		<!-- <div id='statusBoard' class="col-lg row honey rounded m-2">
-		-->
-		<div style="display: none;" id="currentWordDisplay" class="col honey"> 
-					<!-- 
-			</div>
-			<div class="col">
-				<button id="submitButton" class="honey" onclick="finishTurn()">SUBMIT</button>
-				<button id="clearButton" class="honey" onclick="clearTurn()">CLEAR</button>
-			</div>
-		</div> -->
+		<div style="display: none;" id="currentWordDisplay" class="col honey">
 		</div>
 		<div id='scoreBoard' class="col-lg row">
 			<div class="col row player0 scorecard">
@@ -110,15 +83,20 @@
 
 	</div>
 	</div>
-	<p>Background photo by <a href="https://unsplash.com/@enginakyurt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">engin akyurt</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-	</p>
+	<ul id="credits">
+		<li>Word checking via <a href="https://dictionaryapi.com/products/index">Merriam-Webster APIs</a></li>
+		<li>Special thanks to Red Blob Games for <a href="https://www.redblobgames.com/grids/hexagons/" target="">their
+				tutorial on hexagonal coordinate systems</a>.</li>
+		<li>Thanks to <a href="https://github.com/zhouyuhang">zhouyuhang</a> for the <a
+				href="https://github.com/zhouyuhang/JS-Boggle-Game">boggle dice algorithm</a></li>
+		<li>Background photo by <a
+				href="https://unsplash.com/@enginakyurt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">engin
+				akyurt</a> on <a
+				href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+		</li>
+	</ul>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script> -->
-<!-- <script src="hex-dom.js"></script> -->
 <script src='svg-paths.js'></script>
 <script src='sandwich.js'></script>
 <script src='hex-svg.js'></script>

@@ -60,6 +60,7 @@ function drawSpoon() {
 	// var enterText="enter"
 	// var clearText="clear"
 	spoonBack = gameBoard.path(spoonBacker).move(400, 50).attr('id', 'spoonBack').transform({ scale: 3 })
+	spoonBack.attr('class', `player${currentPlayer}`)
 	spoon = gameBoard.path(spoonPath).move(400, 50).attr('id', 'spoon').transform({ scale: 3 }).on('click', function () { submitButtonClicked() })
 
 	spoon.attr(
@@ -166,6 +167,7 @@ function appendToHistory(player, word) {
 async function submitButtonClicked() {
 	if (currentword.length > 0) { 
 		spoon.attr('stroke', 'cornflowerblue').attr('class', `black`)
+		spoonBack.attr('fill', 'cornflowerblue').attr('class', `black`)
 		await dictionaryCheck(currentword) 
 	}
 }
